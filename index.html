@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa Vivo — Qué se vota el jueves 16</title>
+
+<!-- Open Graph: esto es lo que hace que el link, pegado en crudo en WhatsApp/Instagram, se vea como un flyer.
+     Cuando se publique en un dominio real, reemplazar las URLs por las reales y subir una imagen og-image de 1200x630. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="JUEVES 16/07 — El Senado vota la Ley de Inviolabilidad de la Propiedad Privada">
+<meta property="og:description" content="Deroga límites a la venta de tierras rurales a extranjeros (Ley 26.737). Informate y difundí.">
+<meta property="og:image" content="https://mapavivo.net/og-image.png">
+<meta property="og:url" content="https://mapavivo.net">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#E4E5DF;
+    --paper-2:#DCDDD6;
+    --ink:#17191B;
+    --ink-soft:#4A4E4C;
+    --hair:#B7BAB1;
+    --hair-soft:#C9CBC3;
+    --seal:#9E2B25;
+    --seal-deep:#7C211C;
+    --slate:#1C2024;
+    --slate-2:#23282C;
+    --blue:#3E5B6A;
+    --ok:#3A5A3E;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo',system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'JetBrains Mono',monospace}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    border-bottom:1px solid var(--ink);
+    background:var(--paper);
+    position:sticky;top:0;z-index:40;
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
+  .brand{display:flex;align-items:baseline;gap:10px}
+  .brand b{font-weight:900;letter-spacing:-.02em;font-size:19px}
+  .brand span{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink-soft);text-transform:uppercase}
+  .topbar .status{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--seal);letter-spacing:.06em;display:flex;align-items:center;gap:7px}
+  .print-btn{
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+    background:transparent;border:1px solid var(--ink);color:var(--ink);padding:6px 12px;border-radius:3px;cursor:pointer;
+  }
+  .print-btn:hover{background:var(--ink);color:var(--paper)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--seal);display:inline-block;animation:pulse 1.8s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+  @media (prefers-reduced-motion:reduce){.dot{animation:none}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:56px 0 40px;border-bottom:1px solid var(--hair)}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-soft);margin-bottom:22px;
+    display:flex;gap:14px;flex-wrap:wrap;align-items:center;
+  }
+  .eyebrow .tag{border:1px solid var(--hair);padding:3px 9px;border-radius:2px}
+  .eyebrow .tag.urgent{border-color:var(--seal);color:var(--seal);background:rgba(158,43,37,.05)}
+  h1{
+    font-weight:900;letter-spacing:-.025em;line-height:1.05;
+    font-size:clamp(26px,3.6vw,38px);text-transform:uppercase;
+  }
+  h1 .seal{color:var(--seal)}
+  .top-row{
+    display:flex;gap:28px;align-items:stretch;flex-wrap:wrap;margin-top:22px;
+  }
+  .hero-box{
+    border:1px solid var(--ink);border-radius:4px;background:var(--paper-2);
+    padding:22px 24px 0;flex:1;min-width:320px;display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .lede-wrap{flex:1;min-width:260px;align-self:center;display:flex;flex-direction:column;gap:12px}
+  .hero .lede{
+    font-size:clamp(15.5px,1.8vw,17px);
+    line-height:1.5;color:var(--ink);
+  }
+  .countbar{
+    margin:20px -24px 0;display:flex;flex-wrap:wrap;gap:0;
+    border:none;border-top:1px solid var(--ink);border-radius:0;overflow:hidden;width:calc(100% + 48px);
+  }
+  .countbar .cell{padding:12px 20px;border-right:1px solid var(--hair);flex:1;min-width:110px}
+  .countbar .cell:last-child{border-right:0}
+  .countbar .k{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+  .countbar .v{font-weight:800;font-size:22px;letter-spacing:-.01em;margin-top:3px}
+  .countbar .cell.hot .v{color:var(--seal)}
+  @media (max-width:640px){.top-row{flex-direction:column}}
+
+  /* ---------- section frames ---------- */
+  section{padding:52px 0}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+  .sec-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--seal);letter-spacing:.1em}
+  .sec-title{font-weight:800;font-size:clamp(22px,3.4vw,30px);letter-spacing:-.02em;text-transform:uppercase}
+  .sec-sub{color:var(--ink-soft);max-width:640px;margin-bottom:30px;font-size:15.5px}
+
+  /* ---------- tabs (toggle) ---------- */
+  .tabs{display:flex;gap:0;margin-bottom:16px;border:1px solid var(--ink);border-radius:4px;overflow:hidden;width:fit-content;max-width:100%}
+  .tab{
+    font-family:'Archivo';font-weight:700;font-size:14px;padding:11px 18px;
+    background:var(--paper-2);color:var(--ink-soft);border:none;border-right:1px solid var(--hair);
+    cursor:default;position:relative;white-space:nowrap;
+  }
+  .tab:last-child{border-right:0}
+  .tab.active{background:var(--seal);color:#fff}
+  .tab:disabled{color:#9A9D95;cursor:not-allowed}
+  .tab .soon{display:block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:#AEB0A8;margin-top:2px}
+  @media (max-width:640px){.tabs{width:100%}.tab{flex:1;font-size:12px;padding:10px 8px}}
+
+  /* ---------- map: dos versiones responsive ---------- */
+  svg.map.map-desktop{display:block}
+  svg.map.map-mobile{display:none}
+  @media (max-width:720px){
+    svg.map.map-desktop{display:none}
+    svg.map.map-mobile{display:block}
+  }
+  .printable-stack{display:none}
+  .print-module{margin-bottom:22px;break-inside:avoid;page-break-inside:avoid}
+
+  @media print{
+    body{background:#fff;font-size:12px}
+    .print-btn,.topbar .status,.tabs,#dossier,#convocatoria,#placa,#difundir,footer .principle,.toast{display:none!important}
+    svg.map.map-desktop{display:none!important}
+    svg.map.map-mobile{display:block!important}
+    .printable-stack{display:block!important}
+    .map-frame{border:1px solid #000;background:#fff}
+    a{color:inherit;text-decoration:none}
+    .dossier,.print-module{border:1px solid #000;box-shadow:none}
+    .d-top{background:#e8e8e8!important;color:#000!important}
+    .d-top h3{color:#000!important}
+    .d-flag{background:#000!important;color:#fff!important}
+    section{padding:14px 0}
+  }
+  .map-frame{
+    border:1px solid var(--ink);border-radius:4px;background:var(--paper-2);
+    padding:8px;position:relative;
+  }
+  .map-frame::before{
+    content:"MAPA · TOCÁ UN NODO";position:absolute;top:12px;left:14px;z-index:2;
+    font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--ink-soft);
+  }
+  svg.map{display:block;width:100%;height:auto}
+  .node{cursor:pointer;outline:none}
+  .node circle.core{fill:var(--paper);stroke:var(--ink);stroke-width:1.5;transition:.18s}
+  .node.urgent circle.core{stroke:var(--seal);stroke-width:2.5;fill:#F2E4E2}
+  .node text{font-family:'JetBrains Mono',monospace;fill:var(--ink);pointer-events:none}
+  .node .lbl{font-size:12px;font-weight:700}
+  .node .sub{font-size:9.5px;fill:var(--ink-soft)}
+  .node:hover circle.core,.node:focus-visible circle.core{stroke-width:3;fill:#fff}
+  .node.active circle.core{fill:var(--seal);stroke:var(--seal)}
+  .node.active text.lbl{fill:#fff}
+  .node.active .sub{fill:rgba(255,255,255,.7)}
+  .thread{stroke:var(--hair);stroke-width:1.2;fill:none}
+  .thread.strong{stroke:var(--seal);stroke-width:2;stroke-dasharray:5 4}
+  .hub circle{fill:var(--slate);stroke:none}
+  .hub text{fill:var(--paper);font-family:'JetBrains Mono',monospace;text-anchor:middle;pointer-events:none}
+  .hub .h1{font-size:11px;font-weight:700;letter-spacing:.04em}
+  .hub .h2{font-size:8.5px;fill:rgba(228,229,223,.65)}
+  /* caja roja central (Ley de Inviolabilidad) */
+  .node.central{cursor:pointer}
+  .node.central .core-rect{fill:var(--seal);stroke:var(--seal-deep);stroke-width:2;transition:.18s}
+  .node.central:hover .core-rect,.node.central:focus-visible .core-rect{fill:var(--seal-deep)}
+  .node.central text.lbl-box{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:19px;fill:#fff;letter-spacing:.01em;pointer-events:none}
+  .node.central text.sub-box{font-family:'JetBrains Mono',monospace;font-size:11px;fill:rgba(255,255,255,.75);pointer-events:none}
+  /* palabras clave al lado de cada burbuja, texto chico, alineado a la izquierda */
+  .kw{font-family:'Archivo',sans-serif;font-size:13px;font-weight:600;fill:var(--ink);pointer-events:none}
+  .kw-ref{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;fill:var(--seal);pointer-events:none}
+  .kw-pending{fill:#B8862B;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.03em;pointer-events:none}
+
+  /* ---------- dossier ---------- */
+  .dossier{
+    margin-top:14px;border:1px solid var(--ink);border-radius:4px;background:var(--paper);
+    min-height:220px;overflow:hidden;
+  }
+  .dossier .d-top{
+    background:var(--slate);color:var(--paper);padding:16px 20px;
+    display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;
+  }
+  .dossier .d-top h3{font-size:19px;font-weight:800;letter-spacing:-.01em;line-height:1.15;color:#fff}
+  .dossier .d-flag{
+    font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;
+    padding:4px 9px;border-radius:2px;white-space:nowrap;text-transform:uppercase;
+  }
+  .flag-urgent{background:var(--seal);color:#fff}
+  .flag-loss{background:#4A4E4C;color:#fff}
+  .flag-node{background:transparent;border:1px solid rgba(228,229,223,.4);color:var(--paper)}
+  .flag-pending{background:#B8862B;color:#fff}
+  .dossier .d-body{padding:20px 22px 18px}
+  .pts{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .pt{display:flex;gap:13px;padding:15px 20px 15px 0;border-bottom:1px solid var(--hair-soft)}
+  .pt:nth-child(odd){border-right:1px solid var(--hair-soft);padding-right:22px}
+  .pt:nth-child(even){padding-left:22px}
+  .pt:nth-last-child(1),.pt:nth-last-child(2){border-bottom:0}
+  .pt-n{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--seal);flex:none;padding-top:1px}
+  .pt-pending .pt-n{color:#B8862B}
+  .pt-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:4px}
+  .pt-v{font-size:14.5px;line-height:1.45}
+  .pt-v strong{font-weight:700}
+  .pending{color:#8A6410;font-style:normal}
+  .pt-pending .pt-v{color:#8A6410}
+  .d-src{margin-top:14px;padding-top:12px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .doc-btn{
+    font-family:'Archivo';font-weight:700;font-size:12.5px;color:var(--seal);text-decoration:none;
+    border:1px solid var(--seal);border-radius:3px;padding:6px 12px;white-space:nowrap;transition:.15s;
+  }
+  .doc-btn:hover{background:var(--seal);color:#fff}
+  .d-dev{margin-top:18px;padding-top:16px;border-top:1px dashed var(--hair)}
+  .d-dev-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--seal);margin-bottom:8px;cursor:pointer;user-select:none;display:flex;align-items:center;gap:6px}
+  .d-dev-label:hover{color:var(--seal-deep)}
+  .d-dev-arrow{display:inline-block;transition:transform .18s;font-size:18px;font-weight:700;line-height:1}
+  .d-dev.open .d-dev-arrow{transform:rotate(90deg)}
+  .d-dev-text{font-size:15px;line-height:1.6;color:var(--ink);display:none;margin-top:4px}
+  .d-dev.open .d-dev-text{display:block}
+  .src{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:var(--ink-soft)}
+  @media (max-width:600px){
+    .pts{grid-template-columns:1fr}
+    .pt,.pt:nth-child(odd),.pt:nth-child(even){border-right:0;padding:14px 0}
+    .pt:not(:last-child){border-bottom:1px solid var(--hair-soft)}
+  }
+
+  /* ---------- ask ---------- */
+  .ask{background:var(--slate);color:var(--paper);border-radius:4px;padding:34px;margin-top:8px}
+  .ask .sec-num{color:#E8A29C}
+  .ask h2{font-weight:900;font-size:clamp(24px,4vw,36px);text-transform:uppercase;letter-spacing:-.02em;line-height:1.02}
+  .ask .fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+  .ask label{display:block}
+  .ask .flabel{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(228,229,223,.6);margin-bottom:6px}
+  .ask input{
+    width:100%;background:var(--slate-2);border:1px solid #3A4147;color:var(--paper);
+    padding:11px 13px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:14px;
+  }
+  .ask input:focus{outline:2px solid var(--seal);outline-offset:1px;border-color:var(--seal)}
+  .ask input::placeholder{color:#6B7278}
+  .ask .note{margin-top:14px;font-size:12.5px;color:rgba(228,229,223,.55);font-family:'JetBrains Mono',monospace}
+  @media (max-width:560px){.ask .fields{grid-template-columns:1fr}}
+
+  /* ---------- generator ---------- */
+  .gen-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+  @media (max-width:820px){.gen-grid{grid-template-columns:1fr}}
+  .controls{border:1px solid var(--hair);border-radius:4px;padding:22px;background:var(--paper-2)}
+  .ctl{margin-bottom:18px}
+  .ctl:last-child{margin-bottom:0}
+  .ctl .clabel{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:7px;display:flex;justify-content:space-between}
+  .ctl .clabel .lock{color:var(--seal)}
+  .ctl input[type=text]{width:100%;background:var(--paper);border:1px solid var(--hair);color:var(--ink);padding:10px 12px;border-radius:3px;font-family:'Archivo';font-size:15px}
+  .ctl input:focus{outline:2px solid var(--seal);outline-offset:1px}
+  .swatches{display:flex;gap:8px;flex-wrap:wrap}
+  .swatch{width:34px;height:34px;border-radius:3px;border:2px solid transparent;cursor:pointer}
+  .swatch.on{border-color:var(--ink);box-shadow:0 0 0 2px var(--paper) inset}
+  .upload{
+    border:1.5px dashed var(--hair);border-radius:3px;padding:16px;text-align:center;cursor:pointer;
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-soft);transition:.15s;background:var(--paper);
+  }
+  .upload:hover{border-color:var(--seal);color:var(--seal)}
+  .upload.has{color:var(--ok);border-color:var(--ok)}
+  .fixed-box{border:1px solid var(--hair);border-radius:3px;padding:12px 14px;background:var(--paper);font-size:13px}
+  .fixed-box .fx{display:flex;gap:8px;padding:4px 0;align-items:baseline}
+  .fixed-box .fx .mono{font-size:11px;color:var(--seal);white-space:nowrap}
+  .preview-col{position:sticky;top:70px}
+  canvas{width:100%;height:auto;border:1px solid var(--ink);border-radius:4px;display:block;background:#fff}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-family:'Archivo';font-weight:700;font-size:15px;padding:13px 20px;border-radius:3px;
+    border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;width:100%;margin-top:14px;
+    transition:.15s;
+  }
+  .btn:hover{background:var(--seal);border-color:var(--seal)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:var(--paper)}
+
+  /* ---------- share ---------- */
+  .share-card{border:1px solid var(--ink);border-radius:4px;overflow:hidden}
+  .share-card .sc-top{background:var(--slate);color:var(--paper);padding:14px 18px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  .share-card .sc-body{padding:18px}
+  .msgbox{
+    width:100%;min-height:120px;background:var(--paper-2);border:1px solid var(--hair);border-radius:3px;
+    padding:14px;font-family:'Archivo';font-size:15px;line-height:1.5;resize:vertical;color:var(--ink);
+  }
+  .share-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .share-btns button{
+    flex:1;min-width:130px;font-family:'Archivo';font-weight:700;font-size:14px;padding:12px;border-radius:3px;
+    border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;transition:.15s;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .share-btns button:hover{background:var(--ink);color:var(--paper)}
+  .toast{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--ink);color:var(--paper);padding:12px 22px;border-radius:4px;font-size:14px;font-weight:600;
+    opacity:0;pointer-events:none;transition:.25s;z-index:80;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--ink);padding:34px 0 60px;margin-top:20px}
+  .foot-grid{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start}
+  .foot-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-soft);line-height:1.7;max-width:520px}
+  .foot-note b{color:var(--ink)}
+  .principle{border-left:2px solid var(--seal);padding-left:14px;font-size:14px;max-width:380px;line-height:1.5}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand"><b>MAPA VIVO</b><span>registro de datos públicos</span></div>
+    <div style="display:flex;align-items:center;gap:16px">
+      <button class="print-btn" onclick="window.print()">⎙ Versión imprimible</button>
+      <div class="status"><span class="dot"></span>SESIÓN PREVISTA · JUE 16/07</div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">
+      <span class="tag urgent">● EN AGENDA</span>
+      <span class="tag mono">EXPEDIENTE PE-13/2026</span>
+      <span class="tag mono">SENADO DE LA NACIÓN</span>
+    </div>
+
+    <div class="top-row">
+      <div class="hero-box">
+        <h1>El jueves 16 de julio se vota qué se puede <span class="seal">vender</span></h1>
+        <div class="countbar" id="countbar">
+          <div class="cell hot"><div class="k">Faltan</div><div class="v" id="cd-days">—</div></div>
+          <div class="cell"><div class="k">Cámara</div><div class="v">SENADO</div></div>
+          <div class="cell"><div class="k">Leyes tocadas</div><div class="v">04</div></div>
+        </div>
+      </div>
+      <div class="lede-wrap">
+        <p class="lede">El Senado tiene prevista la sesión para tratar la <strong>Ley de Inviolabilidad de la Propiedad Privada</strong>. Entre otras cosas, deroga los artículos de la Ley de Tierras Rurales que hoy limitan la venta de tierra rural a capitales extranjeros. No es un caso aislado: es parte de un patrón. Este es el mapa.</p>
+        <p class="lede">El mecanismo es el mismo en los cuatro: desregulación, blindaje legal y un actor extranjero sobre un recurso estratégico. Tocá cada nodo para leer el expediente.</p>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- MAP -->
+<section id="mapa">
+  <div class="wrap">
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" role="tab" aria-selected="true">Ley de Inviolabilidad</button>
+      <button class="tab" role="tab" disabled style="display:none">Ley de Glaciares<span class="soon">próximamente</span></button>
+      <button class="tab" role="tab" disabled style="display:none">Súper RIGI<span class="soon">próximamente</span></button>
+    </div>
+
+    <div class="map-frame">
+      <!-- DESKTOP: fila horizontal -->
+      <svg class="map map-desktop" viewBox="0 0 920 311" role="group" aria-label="La Ley de Inviolabilidad y las cuatro leyes que modifica">
+        <line class="thread strong" x1="460" y1="95" x2="460" y2="115"/>
+        <line class="thread" x1="140" y1="115" x2="761" y2="115"/>
+        <line class="thread" x1="140" y1="115" x2="140" y2="139"/>
+        <line class="thread" x1="347" y1="115" x2="347" y2="139"/>
+        <line class="thread" x1="554" y1="115" x2="554" y2="139"/>
+        <line class="thread" x1="761" y1="115" x2="761" y2="139"/>
+
+        <g class="node central" data-node="0" tabindex="0" role="button" aria-label="Ley de Inviolabilidad de la Propiedad Privada">
+          <rect class="core-rect" x="210" y="15" width="500" height="80" rx="6"/>
+          <text class="lbl-box" x="460" y="48" text-anchor="middle">LEY DE INVIOLABILIDAD</text>
+          <text class="lbl-box" x="460" y="68" text-anchor="middle">DE LA PROPIEDAD PRIVADA</text>
+          <text class="sub-box" x="460" y="86" text-anchor="middle">se vota 16/07 · un paquete que toca cuatro leyes a la vez</text>
+        </g>
+
+        <g class="node" data-node="1" tabindex="0" role="button" aria-label="Ley de Tierras">
+          <circle class="core" cx="140" cy="181" r="42"/>
+          <text class="lbl" x="140" y="177" text-anchor="middle" style="font-size:11px">LEY DE</text>
+          <text class="lbl" x="140" y="191" text-anchor="middle" style="font-size:11px">TIERRAS</text>
+        </g>
+        <text class="kw" x="140" y="243" text-anchor="middle"><tspan x="140">Elimina el tope del 15%</tspan><tspan x="140" dy="16">a la propiedad extranjera</tspan></text>
+        <text class="kw-ref" x="140" y="277" text-anchor="middle">Ley 26.737</text>
+
+        <g class="node" data-node="2" tabindex="0" role="button" aria-label="Expropiaciones">
+          <circle class="core" cx="347" cy="181" r="42"/>
+          <text class="lbl" x="347" y="177" text-anchor="middle" style="font-size:10.5px">EXPRO-</text>
+          <text class="lbl" x="347" y="191" text-anchor="middle" style="font-size:10.5px">PIACIONES</text>
+        </g>
+        <text class="kw-pending" x="347" y="243" text-anchor="middle">PENDIENTE —</text>
+        <text class="kw-pending" x="347" y="259" text-anchor="middle">cargar idea</text>
+
+        <g class="node" data-node="3" tabindex="0" role="button" aria-label="Desalojos">
+          <circle class="core" cx="554" cy="181" r="42"/>
+          <text class="lbl" x="554" y="186" text-anchor="middle" style="font-size:11px">DESALOJOS</text>
+        </g>
+        <text class="kw-pending" x="554" y="243" text-anchor="middle">PENDIENTE —</text>
+        <text class="kw-pending" x="554" y="259" text-anchor="middle">cargar idea</text>
+
+        <g class="node" data-node="4" tabindex="0" role="button" aria-label="Manejo del Fuego">
+          <circle class="core" cx="761" cy="181" r="42"/>
+          <text class="lbl" x="761" y="177" text-anchor="middle" style="font-size:11px">MANEJO</text>
+          <text class="lbl" x="761" y="191" text-anchor="middle" style="font-size:11px">DEL FUEGO</text>
+        </g>
+        <text class="kw-pending" x="761" y="243" text-anchor="middle">PENDIENTE —</text>
+        <text class="kw-pending" x="761" y="259" text-anchor="middle">cargar idea</text>
+      </svg>
+
+      <!-- MOBILE: columna vertical, viewBox angosto para que el texto no quede diminuto -->
+      <svg class="map map-mobile" viewBox="0 0 400 700" role="group" aria-label="La Ley de Inviolabilidad y las cuatro leyes que modifica">
+        <line class="thread strong" x1="200" y1="105" x2="200" y2="560"/>
+        <line class="thread" x1="200" y1="170" x2="114" y2="170"/>
+        <line class="thread" x1="200" y1="300" x2="114" y2="300"/>
+        <line class="thread" x1="200" y1="430" x2="114" y2="430"/>
+        <line class="thread" x1="200" y1="560" x2="114" y2="560"/>
+
+        <g class="node central" data-node="0" tabindex="0" role="button" aria-label="Ley de Inviolabilidad de la Propiedad Privada">
+          <rect class="core-rect" x="40" y="15" width="320" height="82" rx="6"/>
+          <text class="lbl-box" x="200" y="46" text-anchor="middle" style="font-size:15px">LEY DE INVIOLABILIDAD</text>
+          <text class="lbl-box" x="200" y="65" text-anchor="middle" style="font-size:15px">DE LA PROPIEDAD PRIVADA</text>
+          <text class="sub-box" x="200" y="86" text-anchor="middle" style="font-size:10px">se vota 16/07 · toca cuatro leyes a la vez</text>
+        </g>
+
+        <g class="node" data-node="1" tabindex="0" role="button" aria-label="Ley de Tierras">
+          <circle class="core" cx="80" cy="170" r="34"/>
+          <text class="lbl" x="80" y="166" text-anchor="middle" style="font-size:9.5px">LEY DE</text>
+          <text class="lbl" x="80" y="178" text-anchor="middle" style="font-size:9.5px">TIERRAS</text>
+        </g>
+        <text class="kw" x="126" y="160"><tspan x="126">Elimina el tope del 15%</tspan><tspan x="126" dy="15">a la propiedad extranjera</tspan></text>
+        <text class="kw-ref" x="126" y="194">Ley 26.737</text>
+
+        <g class="node" data-node="2" tabindex="0" role="button" aria-label="Expropiaciones">
+          <circle class="core" cx="80" cy="300" r="34"/>
+          <text class="lbl" x="80" y="296" text-anchor="middle" style="font-size:9px">EXPRO-</text>
+          <text class="lbl" x="80" y="308" text-anchor="middle" style="font-size:9px">PIACIONES</text>
+        </g>
+        <text class="kw-pending" x="126" y="304">PENDIENTE — cargar idea</text>
+
+        <g class="node" data-node="3" tabindex="0" role="button" aria-label="Desalojos">
+          <circle class="core" cx="80" cy="430" r="34"/>
+          <text class="lbl" x="80" y="434" text-anchor="middle" style="font-size:9.5px">DESALOJOS</text>
+        </g>
+        <text class="kw-pending" x="126" y="434">PENDIENTE — cargar idea</text>
+
+        <g class="node" data-node="4" tabindex="0" role="button" aria-label="Manejo del Fuego">
+          <circle class="core" cx="80" cy="560" r="34"/>
+          <text class="lbl" x="80" y="556" text-anchor="middle" style="font-size:9.5px">MANEJO</text>
+          <text class="lbl" x="80" y="568" text-anchor="middle" style="font-size:9.5px">DEL FUEGO</text>
+        </g>
+        <text class="kw-pending" x="126" y="564">PENDIENTE — cargar idea</text>
+      </svg>
+    </div>
+
+    <!-- dossier -->
+    <div class="dossier" id="dossier" aria-live="polite"></div>
+    <div class="printable-stack" id="printable-stack"></div>
+  </div>
+</section>
+
+<!-- ASK -->
+<section id="convocatoria">
+  <div class="wrap">
+    <div class="ask">
+      <div class="sec-head"><span class="sec-num">02</span><span class="sec-title" style="color:var(--paper)">La convocatoria</span></div>
+      <h2>Ese día,<br>estar ahí importa</h2>
+      <p style="margin-top:16px;max-width:560px;color:rgba(228,229,223,.85)">Cargá una vez los datos de la concentración y quedan fijos en la placa y en el mensaje de difusión. Estos campos los completa quien coordina —no las agrupaciones.</p>
+      <div class="fields">
+        <label><span class="flabel">Hora</span><input id="f-hora" type="text" placeholder="PENDIENTE — ej. 14:00 hs"></label>
+        <label><span class="flabel">Punto de concentración</span><input id="f-lugar" type="text" placeholder="PENDIENTE — ej. Congreso, Rivadavia y Callao"></label>
+      </div>
+      <p class="note">→ mientras diga PENDIENTE, la placa y el mensaje muestran el aviso. Confirmá el dato con las agrupaciones antes de difundir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GENERATOR -->
+<section id="placa">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">Tu placa</span></div>
+    <p class="sec-sub">Poné tu logo, tu nombre y tu color. La información verificada no se puede tocar: viaja igual en todas las placas. Descargás una imagen lista para Instagram y WhatsApp.</p>
+
+    <div class="gen-grid">
+      <div class="controls">
+        <div class="ctl">
+          <div class="clabel"><span>Tu logo</span><span>editable</span></div>
+          <label class="upload" id="uplabel" for="logo-input">＋ subir logo (PNG con fondo transparente)</label>
+          <input id="logo-input" type="file" accept="image/*" hidden>
+        </div>
+        <div class="ctl">
+          <div class="clabel"><span>Nombre de tu agrupación</span><span>editable</span></div>
+          <input id="c-name" type="text" placeholder="Ej. Asamblea del Arroyo" maxlength="42">
+        </div>
+        <div class="ctl">
+          <div class="clabel"><span>Color de acento</span><span>editable</span></div>
+          <div class="swatches" id="swatches">
+            <div class="swatch on" style="background:#9E2B25" data-c="#9E2B25"></div>
+            <div class="swatch" style="background:#1C2024" data-c="#1C2024"></div>
+            <div class="swatch" style="background:#3E5B6A" data-c="#3E5B6A"></div>
+            <div class="swatch" style="background:#3A5A3E" data-c="#3A5A3E"></div>
+            <div class="swatch" style="background:#8A5A1E" data-c="#8A5A1E"></div>
+            <div class="swatch" style="background:#5A2A5A" data-c="#5A2A5A"></div>
+          </div>
+        </div>
+        <div class="ctl">
+          <div class="clabel"><span>Información</span><span class="lock">🔒 fija · no editable</span></div>
+          <div class="fixed-box">
+            <div class="fx"><span class="mono">QUÉ</span><span>Ley de Inviolabilidad de la Propiedad Privada</span></div>
+            <div class="fx"><span class="mono">DEROGA</span><span>límites a la venta de tierra rural a extranjeros (Ley 26.737)</span></div>
+            <div class="fx"><span class="mono">CUÁNDO</span><span>Jueves 16/07 · Senado (sesión prevista)</span></div>
+            <div class="fx"><span class="mono">LINK</span><span>mapavivo.net</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-col">
+        <canvas id="canvas" width="1080" height="1080" aria-label="Vista previa de la placa"></canvas>
+        <button class="btn" id="download">↓ Descargar placa (1080×1080)</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHARE -->
+<section id="difundir">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">Difundir</span></div>
+    <p class="sec-sub">Copiá el mensaje ya escrito y mandalo a tus grupos. Cuando el link se pega en WhatsApp, aparece solo la tarjeta con la placa.</p>
+
+    <div class="share-card">
+      <div class="sc-top">MENSAJE LISTO PARA REENVIAR</div>
+      <div class="sc-body">
+        <textarea class="msgbox" id="msg" readonly></textarea>
+        <div class="share-btns">
+          <button data-share="copy">⧉ Copiar texto</button>
+          <button data-share="wa">→ WhatsApp</button>
+          <button data-share="tg">→ Telegram</button>
+          <button data-share="x">→ X</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-note">
+      <b>MAPA VIVO</b> · registro de datos públicos<br>
+      El mapa no concluye: muestra únicamente datos verificados y deja que el patrón emerja.<br><br>
+      <b>Fuentes:</b> Senado de la Nación (dictámenes) · CELS · Chequeado · Palabras del Derecho.<br>
+      Expediente PE-13/2026 · Mensaje 22/26 · ingresado 27/03/2026.<br>
+      Sesión marcada como <b>prevista</b>: el tratamiento fue postergado en ocasiones anteriores.
+    </div>
+    <div class="principle">Solo datos verificados. Nada de números inventados. Donde falta confirmación, se dice <span class="pending" style="font-size:10px;padding:1px 5px">PENDIENTE</span>.</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------- DATA: dossiers ----------
+   Esqueleto FIJO de 4 puntos por nodo (mismas 4 preguntas en todos → el patrón se ve solo).
+   Cada punto: [label, valor, verificado?]  verificado=false muestra aviso PENDIENTE. */
+const NODES = {
+  0:{
+    title:"Ley de Inviolabilidad de la Propiedad Privada",
+    flag:{t:"● SE VOTA EL 16/07",c:"flag-urgent"},
+    points:[
+      ["Qué es","Un solo proyecto que modifica cuatro leyes a la vez: tierras rurales, expropiaciones, desalojos y manejo del fuego.",true],
+      ["Cómo llega","Impulsada por el Ejecutivo (Min. Desregulación). Dictamen de mayoría el 20/05.",true],
+      ["Qué se vota el 16","El texto completo en el recinto del Senado. Sesión prevista — ya se postergó dos veces antes.",true],
+      ["Por qué en conjunto","Al empaquetar cuatro reformas en una sola ley, se votan juntas: tocá cada nodo para ver qué cambia en cada una.",true]
+    ],
+    src:"Senado (dictamen) · Exp. PE-13/2026 · Mensaje 22/26 · CELS · Chequeado"
+  },
+  1:{
+    title:"Ley de Tierras Rurales 26.737",
+    flag:{t:"TIERRAS · SE VACÍA",c:"flag-loss"},
+    points:[
+      ["Qué protege hoy","Ningún extranjero puede tener más del 15% de la tierra rural del país — ese tope se aplica también por provincia y por municipio. Dentro de ese 15%, ninguna nacionalidad puede quedarse con más del 30%. Y nadie puede superar las 1.000 hectáreas en la \"zona núcleo\" (las tierras más productivas).",true],
+      ["Por qué importa","A nivel país, solo el 6% de la tierra rural es extranjera — muy por debajo del límite del 15%. Pero ese promedio esconde lo que pasa en zonas puntuales: en Tinogasta (Catamarca) ya es 27%, y hay zonas de la región pampeana que superan el 30%. El problema no es el promedio nacional, es dónde se concentra.",true],
+      ["Qué elimina","Esto no cambia nada para nadie que sea argentino: comprás y vendés tierra rural como siempre. Lo que desaparece es el límite que tenían los extranjeros privados —personas, fondos, corporaciones— para comprar sin tope. Solo sigue restringido un Estado extranjero comprando directamente. Y como comprar grandes extensiones requiere capital, el efecto real recae sobre todo en fondos de inversión y corporaciones extranjeras, no en pequeños compradores.",true],
+      ["A quién beneficia","Imaginate el límite: hoy nadie puede tener más de 1.000 hectáreas en la zona más productiva. Sin ese tope, alguien podría juntar una superficie del tamaño de la provincia de Misiones sin pedir ningún permiso especial. Las tierras con ríos o en zona de frontera siguen protegidas en el papel — pero con una salvedad: el Poder Ejecutivo puede autorizar excepciones si decide que no hay riesgo para la soberanía. Esa decisión ya no pasa por el Congreso.",true]
+    ],
+    src:"Boletín Oficial — Ley 26.737 (arts. 8, 9 y 10) · El Cronista · Chequeado",
+    dev:"Esta no es la primera vez. En 2023, a los pocos días de asumir, Milei ya intentó derogar esta misma ley por decreto (DNU 70/23). La Justicia lo frenó con una cautelar que hoy sigue en la Corte Suprema. El proyecto que se vota el 16 es el segundo intento de lograr lo mismo, esta vez por ley — y por eso importa entender qué patrón repite. PENDIENTE — seguir el desarrollo: cómo esto conecta con el mecanismo que se repite en Súper RIGI, Antártida y AySA/Mekorot.",
+    docUrl:"docs/ley-26737-texto-sancionado.pdf",
+    docLabel:"Ley 26.737 — texto sancionado (PDF, registrada 22/12/2011)"
+  },
+  2:{
+    title:"Régimen de Expropiaciones",
+    flag:{t:"EXPROPIACIONES",c:"flag-node"},
+    points:[
+      ["Qué cambia","PENDIENTE — cargar qué modifica sobre la Ley de Expropiaciones 21.499.",false],
+      ["Qué se pierde","PENDIENTE — cargar el mecanismo (interpretación restrictiva de utilidad pública, lucro cesante, etc.).",false],
+      ["A quién afecta","PENDIENTE — cargar con fuente.",false],
+      ["Estado","PENDIENTE — parte del mismo proyecto que se vota el 16.",false]
+    ],
+    src:"— cargar cita oficial"
+  },
+  3:{
+    title:"Régimen de Desalojos",
+    flag:{t:"DESALOJOS",c:"flag-node"},
+    points:[
+      ["Qué cambia","PENDIENTE — cargar qué modifica sobre el Código Procesal Civil y Comercial.",false],
+      ["Qué habilita","PENDIENTE — cargar el mecanismo (desalojos exprés, plazos, etc.).",false],
+      ["A quién afecta","PENDIENTE — cargar con fuente.",false],
+      ["Estado","PENDIENTE — parte del mismo proyecto que se vota el 16.",false]
+    ],
+    src:"— cargar cita oficial"
+  },
+  4:{
+    title:"Ley de Manejo del Fuego",
+    flag:{t:"MANEJO DEL FUEGO",c:"flag-node"},
+    points:[
+      ["Qué cambia","PENDIENTE — cargar qué modifica sobre la Ley 26.815.",false],
+      ["Qué habilita","PENDIENTE — cargar el mecanismo (cambio de uso del suelo en zonas quemadas, etc.).",false],
+      ["A quién afecta","PENDIENTE — cargar con fuente.",false],
+      ["Estado","PENDIENTE — parte del mismo proyecto que se vota el 16.",false]
+    ],
+    src:"— cargar cita oficial"
+  }
+};
+
+/* ---------- render dossier ---------- */
+const dossier=document.getElementById('dossier');
+function renderNode(n){
+  const d=NODES[n];
+  let pts=d.points.map((p,i)=>{
+    const val=p[2]?p[1]:`<span class="pending">PENDIENTE — ${p[1]}</span>`;
+    return `<div class="pt${p[2]?'':' pt-pending'}"><span class="pt-n">0${i+1}</span><div class="pt-body"><div class="pt-k">${p[0]}</div><div class="pt-v">${val}</div></div></div>`;
+  }).join('');
+  dossier.innerHTML=`<div class="d-top"><h3>${d.title}</h3><span class="d-flag ${d.flag.c}">${d.flag.t}</span></div><div class="d-body"><div class="pts">${pts}</div>${d.dev?`<div class="d-dev"><div class="d-dev-label" onclick="this.parentElement.classList.toggle('open')"><span class="d-dev-arrow">▸</span> DESARROLLO</div><p class="d-dev-text">${d.dev}</p></div>`:''}<div class="d-src"><span class="src">FUENTE · ${d.src}</span>${d.docUrl?`<a class="doc-btn" href="${d.docUrl}" target="_blank" rel="noopener" download>↓ ${d.docLabel||'Descargar documento oficial'}</a>`:''}</div></div>`;
+  document.querySelectorAll('.node').forEach(g=>g.classList.toggle('active',g.dataset.node===String(n)));
+}
+document.querySelectorAll('.node').forEach(g=>{
+  g.addEventListener('click',()=>renderNode(g.dataset.node));
+  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();renderNode(g.dataset.node);}});
+});
+renderNode(0);
+
+/* ---------- versión imprimible: los 5 módulos apilados y ya expandidos ---------- */
+function buildPrintableStack(){
+  const order=[0,1,2,3,4];
+  const stack=document.getElementById('printable-stack');
+  stack.innerHTML=order.map(n=>{
+    const d=NODES[n];
+    const pts=d.points.map((p,i)=>{
+      const val=p[2]?p[1]:`<span class="pending">PENDIENTE — ${p[1]}</span>`;
+      return `<div class="pt${p[2]?'':' pt-pending'}"><span class="pt-n">0${i+1}</span><div class="pt-body"><div class="pt-k">${p[0]}</div><div class="pt-v">${val}</div></div></div>`;
+    }).join('');
+    const dev=d.dev?`<div class="d-dev open"><div class="d-dev-label"><span class="d-dev-arrow">▸</span> DESARROLLO</div><p class="d-dev-text">${d.dev}</p></div>`:'';
+    return `<div class="dossier print-module"><div class="d-top"><h3>${d.title}</h3><span class="d-flag ${d.flag.c}">${d.flag.t}</span></div><div class="d-body"><div class="pts">${pts}</div>${dev}<div class="d-src"><span class="src">FUENTE · ${d.src}</span>${d.docUrl?`<a class="doc-btn" href="${d.docUrl}">↓ ${d.docLabel||'Documento oficial'}</a>`:''}</div></div></div>`;
+  }).join('');
+}
+buildPrintableStack();
+
+/* ---------- countdown ---------- */
+(function(){
+  const target=new Date(2026,6,16); // 16 julio 2026
+  const now=new Date();
+  const diff=Math.ceil((target-now)/(1000*60*60*24));
+  document.getElementById('cd-days').textContent=diff>0?(diff+' días'):(diff===0?'HOY':'—');
+})();
+
+/* ---------- generator state ---------- */
+const state={name:'',color:'#9E2B25',logo:null,hora:'',lugar:''};
+
+const hEl=document.getElementById('f-hora'), lEl=document.getElementById('f-lugar');
+hEl.addEventListener('input',()=>{state.hora=hEl.value;draw();buildMsg();});
+lEl.addEventListener('input',()=>{state.lugar=lEl.value;draw();buildMsg();});
+document.getElementById('c-name').addEventListener('input',e=>{state.name=e.target.value;draw();});
+
+document.getElementById('swatches').addEventListener('click',e=>{
+  const s=e.target.closest('.swatch'); if(!s)return;
+  document.querySelectorAll('.swatch').forEach(x=>x.classList.remove('on'));
+  s.classList.add('on'); state.color=s.dataset.c; draw();
+});
+
+const upLabel=document.getElementById('uplabel');
+document.getElementById('logo-input').addEventListener('change',e=>{
+  const file=e.target.files[0]; if(!file)return;
+  const r=new FileReader();
+  r.onload=ev=>{const img=new Image();img.onload=()=>{state.logo=img;upLabel.textContent='✓ logo cargado';upLabel.classList.add('has');draw();};img.src=ev.target.result;};
+  r.readAsDataURL(file);
+});
+
+/* ---------- canvas draw ---------- */
+const cv=document.getElementById('canvas'), cx=cv.getContext('2d');
+function rr(x,y,w,h,r){cx.beginPath();cx.moveTo(x+r,y);cx.arcTo(x+w,y,x+w,y+h,r);cx.arcTo(x+w,y+h,x,y+h,r);cx.arcTo(x,y+h,x,y,r);cx.arcTo(x,y,x+w,y,r);cx.closePath();}
+function draw(){
+  const W=1080;
+  // ground
+  cx.fillStyle='#1C2024';cx.fillRect(0,0,W,W);
+  // accent top bar
+  cx.fillStyle=state.color;cx.fillRect(0,0,W,20);
+  // eyebrow
+  cx.fillStyle='rgba(228,229,223,.55)';cx.font='500 24px "JetBrains Mono"';cx.textAlign='left';
+  cx.fillText('MAPA VIVO · EXPEDIENTE PE-13/2026',72,110);
+  // date block
+  cx.fillStyle=state.color;rr(72,150,220,90,8);cx.fill();
+  cx.fillStyle='#fff';cx.font='900 64px "Archivo"';cx.textAlign='center';cx.fillText('JUE 16',182,215);
+  cx.fillStyle='#E4E5DF';cx.font='800 30px "Archivo"';cx.textAlign='left';cx.fillText('JULIO 2026',312,190);
+  cx.fillStyle='rgba(228,229,223,.6)';cx.font='500 22px "JetBrains Mono"';cx.fillText('SENADO · sesión prevista',312,222);
+  // headline
+  cx.fillStyle='#E4E5DF';cx.textAlign='left';
+  cx.font='900 82px "Archivo"';
+  cx.fillText('SE VOTA QUÉ',72,360);
+  cx.fillText('SE PUEDE',72,448);
+  cx.fillStyle=state.color;cx.fillText('VENDER',72,536);
+  // subline
+  cx.fillStyle='#E4E5DF';cx.font='600 30px "Archivo"';
+  wrap('Ley de Inviolabilidad de la Propiedad Privada.',72,610,940,40);
+  cx.fillStyle='rgba(228,229,223,.72)';cx.font='400 27px "Archivo"';
+  wrap('Deroga los límites a la venta de tierra rural a capitales extranjeros (Ley 26.737).',72,656,940,36);
+  // convocatoria strip
+  const hasData=state.hora||state.lugar;
+  cx.fillStyle=hasData?state.color:'#B8862B';rr(72,742,936,96,8);cx.fill();
+  cx.fillStyle='#fff';cx.font='800 26px "Archivo"';cx.textAlign='left';
+  if(hasData){
+    cx.font='500 22px "JetBrains Mono"';cx.fillStyle='rgba(255,255,255,.75)';cx.fillText('CONCENTRACIÓN',96,782);
+    cx.font='800 32px "Archivo"';cx.fillStyle='#fff';
+    cx.fillText((state.hora||'—')+'   ·   '+(state.lugar||'lugar a confirmar'),96,820);
+  }else{
+    cx.font='700 26px "JetBrains Mono"';cx.fillText('PENDIENTE — CARGAR HORA Y LUGAR',96,802);
+  }
+  // org identity zone
+  cx.strokeStyle='rgba(228,229,223,.18)';cx.lineWidth=1;cx.beginPath();cx.moveTo(72,900);cx.lineTo(1008,900);cx.stroke();
+  if(state.logo){
+    const mh=88,r=state.logo.width/state.logo.height,mw=mh*r,mwC=Math.min(mw,240);
+    cx.drawImage(state.logo,72,930,mwC,mwC/r>96?96:mwC/r);
+  }
+  cx.fillStyle='#E4E5DF';cx.font='700 30px "Archivo"';cx.textAlign='right';
+  cx.fillText(state.name||'Convocan las agrupaciones',1008,970);
+  cx.fillStyle=state.color;cx.font='700 24px "JetBrains Mono"';
+  cx.fillText('mapavivo.net',1008,1004);
+  cx.textAlign='left';
+}
+function wrap(t,x,y,max,lh){
+  const words=t.split(' ');let line='',yy=y;
+  for(const w of words){const test=line+w+' ';if(cx.measureText(test).width>max&&line){cx.fillText(line,x,yy);line=w+' ';yy+=lh;}else line=test;}
+  cx.fillText(line,x,yy);
+}
+// ensure fonts loaded before first draw
+if(document.fonts&&document.fonts.ready){document.fonts.ready.then(draw);}
+draw();
+
+document.getElementById('download').addEventListener('click',()=>{
+  const a=document.createElement('a');
+  a.download='mapavivo-16julio-'+(state.name||'placa').replace(/\s+/g,'-').toLowerCase()+'.png';
+  a.href=cv.toDataURL('image/png');a.click();
+  toast('Placa descargada');
+});
+
+/* ---------- share message ---------- */
+const msgEl=document.getElementById('msg');
+function buildMsg(){
+  const loc=(state.hora||state.lugar)?`${state.hora||'[hora]'} · ${state.lugar||'[lugar]'}`:'[hora y lugar a confirmar]';
+  msgEl.value=
+`🔴 JUEVES 16/07 — El Senado tiene prevista la sesión para votar la Ley de "Inviolabilidad de la Propiedad Privada".
+
+Entre otras cosas, deroga los límites a la venta de tierra rural a capitales extranjeros (Ley de Tierras 26.737).
+
+📍 Concentración: ${loc}
+
+Informate y difundí 👉 mapavivo.net`;
+}
+buildMsg();
+
+const LINK='https://mapavivo.net';
+document.querySelectorAll('[data-share]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const t=msgEl.value, enc=encodeURIComponent(t);
+    const m=b.dataset.share;
+    if(m==='copy'){navigator.clipboard.writeText(t).then(()=>toast('Texto copiado'));}
+    else if(m==='wa'){window.open('https://wa.me/?text='+enc,'_blank');}
+    else if(m==='tg'){window.open('https://t.me/share/url?url='+encodeURIComponent(LINK)+'&text='+enc,'_blank');}
+    else if(m==='x'){window.open('https://twitter.com/intent/tweet?text='+enc,'_blank');}
+  });
+});
+
+/* ---------- toast ---------- */
+let tt;
+function toast(m){const el=document.getElementById('toast');el.textContent=m;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2000);}
+</script>
+</body>
+</html>
