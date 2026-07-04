@@ -10,8 +10,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="JUEVES 16/07 — El Senado vota la Ley de Inviolabilidad de la Propiedad Privada">
 <meta property="og:description" content="Deroga límites a la venta de tierras rurales a extranjeros (Ley 26.737). Informate y difundí.">
-<meta property="og:image" content="https://mapavivo.net/og-image.png">
-<meta property="og:url" content="https://mapavivo.net">
+<meta property="og:image" content="https://mapavivo.ar/og-image.png">
+<meta property="og:url" content="https://mapavivo.ar">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,7 +68,7 @@
   @media (prefers-reduced-motion:reduce){.dot{animation:none}}
 
   /* ---------- hero ---------- */
-  .hero{padding:56px 0 40px;border-bottom:1px solid var(--hair)}
+  .hero{padding:14px 0 20px}
   .eyebrow{
     font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;
     text-transform:uppercase;color:var(--ink-soft);margin-bottom:22px;
@@ -80,7 +80,7 @@
     font-weight:900;letter-spacing:-.025em;line-height:1.05;
     font-size:clamp(26px,3.6vw,38px);text-transform:uppercase;
   }
-  h1 .seal{color:var(--seal)}
+  .seal{color:var(--seal)}
   .top-row{
     display:flex;gap:28px;align-items:stretch;flex-wrap:wrap;margin-top:22px;
   }
@@ -105,7 +105,9 @@
   @media (max-width:640px){.top-row{flex-direction:column}}
 
   /* ---------- section frames ---------- */
-  section{padding:52px 0}
+  section{padding:32px 0}
+  #mapa{padding-top:10px}
+  #convocatoria{padding:14px 0}
   .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
   .sec-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--seal);letter-spacing:.1em}
   .sec-title{font-weight:800;font-size:clamp(22px,3.4vw,30px);letter-spacing:-.02em;text-transform:uppercase}
@@ -136,7 +138,7 @@
 
   @media print{
     body{background:#fff;font-size:12px}
-    .print-btn,.topbar .status,.tabs,#dossier,#convocatoria,#placa,#difundir,footer .principle,.toast{display:none!important}
+    .print-btn,.topbar .status,.tabs,#dossier,#convocatoria,#placa,#difundir,footer .principle,.toast,.map-hint{display:none!important}
     svg.map.map-desktop{display:none!important}
     svg.map.map-mobile{display:block!important}
     .printable-stack{display:block!important}
@@ -152,9 +154,9 @@
     border:1px solid var(--ink);border-radius:4px;background:var(--paper-2);
     padding:8px;position:relative;
   }
-  .map-frame::before{
-    content:"MAPA · TOCÁ UN NODO";position:absolute;top:12px;left:14px;z-index:2;
-    font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--ink-soft);
+  .map-hint{
+    font-family:'Archivo';font-weight:800;font-size:13px;letter-spacing:.02em;
+    color:var(--ink);text-align:center;padding:10px 8px 4px;
   }
   svg.map{display:block;width:100%;height:auto}
   .node{cursor:pointer;outline:none}
@@ -219,9 +221,15 @@
   .doc-btn{
     font-family:'Archivo';font-weight:700;font-size:12.5px;color:var(--seal);text-decoration:none;
     border:1px solid var(--seal);border-radius:3px;padding:6px 12px;white-space:nowrap;transition:.15s;
+    max-width:100%;
   }
   .doc-btn:hover{background:var(--seal);color:#fff}
+  @media (max-width:480px){
+    .doc-btn{white-space:normal;display:block;width:100%;text-align:center;box-sizing:border-box;font-size:11.5px;line-height:1.4}
+  }
   .d-dev{margin-top:18px;padding-top:16px;border-top:1px dashed var(--hair)}
+  .d-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .tag-chip{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--seal);border:1px solid var(--seal);border-radius:2px;padding:4px 9px}
   .d-dev-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--seal);margin-bottom:8px;cursor:pointer;user-select:none;display:flex;align-items:center;gap:6px}
   .d-dev-label:hover{color:var(--seal-deep)}
   .d-dev-arrow{display:inline-block;transition:transform .18s;font-size:18px;font-weight:700;line-height:1}
@@ -255,9 +263,20 @@
   .gen-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
   @media (max-width:820px){.gen-grid{grid-template-columns:1fr}}
   .controls{border:1px solid var(--hair);border-radius:4px;padding:22px;background:var(--paper-2)}
+  .org-toggle{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em;color:var(--seal);
+    cursor:pointer;user-select:none;margin:18px 0 0;padding-top:16px;border-top:1px dashed var(--hair);
+    display:flex;align-items:center;gap:7px;
+  }
+  .org-toggle:hover{color:var(--seal-deep)}
+  .org-arrow{display:inline-block;transition:transform .18s;font-size:13px;font-weight:700}
+  .org-toggle.open .org-arrow{transform:rotate(90deg)}
+  .org-fields{display:none;margin-top:16px}
+  .org-fields.open{display:block}
   .ctl{margin-bottom:18px}
   .ctl:last-child{margin-bottom:0}
   .ctl .clabel{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:7px;display:flex;justify-content:space-between}
+  .ctl-hint{font-size:11.5px;color:var(--ink-soft);margin-top:5px;line-height:1.4}
   .ctl .clabel .lock{color:var(--seal)}
   .ctl input[type=text]{width:100%;background:var(--paper);border:1px solid var(--hair);color:var(--ink);padding:10px 12px;border-radius:3px;font-family:'Archivo';font-size:15px}
   .ctl input:focus{outline:2px solid var(--seal);outline-offset:1px}
@@ -265,8 +284,10 @@
   .swatch{width:34px;height:34px;border-radius:3px;border:2px solid transparent;cursor:pointer}
   .swatch.on{border-color:var(--ink);box-shadow:0 0 0 2px var(--paper) inset}
   .upload{
+    display:block;width:100%;box-sizing:border-box;
     border:1.5px dashed var(--hair);border-radius:3px;padding:16px;text-align:center;cursor:pointer;
     font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-soft);transition:.15s;background:var(--paper);
+    overflow-wrap:break-word;
   }
   .upload:hover{border-color:var(--seal);color:var(--seal)}
   .upload.has{color:var(--ok);border-color:var(--ok)}
@@ -319,30 +340,21 @@
 
 <div class="topbar">
   <div class="wrap">
-    <div class="brand"><b>MAPA VIVO</b><span>registro de datos públicos</span></div>
-    <div style="display:flex;align-items:center;gap:16px">
-      <button class="print-btn" onclick="window.print()">⎙ Versión imprimible</button>
-      <div class="status"><span class="dot"></span>SESIÓN PREVISTA · JUE 16/07</div>
-    </div>
+    <div class="brand"><b>MAPA VIVO</b></div>
+    <div class="status"><span class="dot"></span>SESIÓN PREVISTA · JUE 16/07</div>
   </div>
 </div>
 
 <!-- HERO -->
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow">
-      <span class="tag urgent">● EN AGENDA</span>
-      <span class="tag mono">EXPEDIENTE PE-13/2026</span>
-      <span class="tag mono">SENADO DE LA NACIÓN</span>
-    </div>
-
     <div class="top-row">
       <div class="hero-box">
         <h1>El jueves 16 de julio se vota qué se puede <span class="seal">vender</span></h1>
         <div class="countbar" id="countbar">
           <div class="cell hot"><div class="k">Faltan</div><div class="v" id="cd-days">—</div></div>
           <div class="cell"><div class="k">Cámara</div><div class="v">SENADO</div></div>
-          <div class="cell"><div class="k">Leyes tocadas</div><div class="v">04</div></div>
+          <div class="cell"><div class="k">Leyes</div><div class="v">04</div></div>
         </div>
       </div>
       <div class="lede-wrap">
@@ -366,7 +378,7 @@
 
     <div class="map-frame">
       <!-- DESKTOP: fila horizontal -->
-      <svg class="map map-desktop" viewBox="0 0 920 311" role="group" aria-label="La Ley de Inviolabilidad y las cuatro leyes que modifica">
+      <svg class="map map-desktop" viewBox="0 0 920 245" role="group" aria-label="La Ley de Inviolabilidad y las cuatro leyes que modifica">
         <line class="thread strong" x1="460" y1="95" x2="460" y2="115"/>
         <line class="thread" x1="140" y1="115" x2="761" y2="115"/>
         <line class="thread" x1="140" y1="115" x2="140" y2="139"/>
@@ -386,76 +398,67 @@
           <text class="lbl" x="140" y="177" text-anchor="middle" style="font-size:11px">LEY DE</text>
           <text class="lbl" x="140" y="191" text-anchor="middle" style="font-size:11px">TIERRAS</text>
         </g>
-        <text class="kw" x="140" y="243" text-anchor="middle"><tspan x="140">Elimina el tope del 15%</tspan><tspan x="140" dy="16">a la propiedad extranjera</tspan></text>
-        <text class="kw-ref" x="140" y="277" text-anchor="middle">Ley 26.737</text>
 
         <g class="node" data-node="2" tabindex="0" role="button" aria-label="Expropiaciones">
           <circle class="core" cx="347" cy="181" r="42"/>
           <text class="lbl" x="347" y="177" text-anchor="middle" style="font-size:10.5px">EXPRO-</text>
           <text class="lbl" x="347" y="191" text-anchor="middle" style="font-size:10.5px">PIACIONES</text>
         </g>
-        <text class="kw-pending" x="347" y="243" text-anchor="middle">PENDIENTE —</text>
-        <text class="kw-pending" x="347" y="259" text-anchor="middle">cargar idea</text>
 
         <g class="node" data-node="3" tabindex="0" role="button" aria-label="Desalojos">
           <circle class="core" cx="554" cy="181" r="42"/>
           <text class="lbl" x="554" y="186" text-anchor="middle" style="font-size:11px">DESALOJOS</text>
         </g>
-        <text class="kw-pending" x="554" y="243" text-anchor="middle">PENDIENTE —</text>
-        <text class="kw-pending" x="554" y="259" text-anchor="middle">cargar idea</text>
 
         <g class="node" data-node="4" tabindex="0" role="button" aria-label="Manejo del Fuego">
           <circle class="core" cx="761" cy="181" r="42"/>
           <text class="lbl" x="761" y="177" text-anchor="middle" style="font-size:11px">MANEJO</text>
           <text class="lbl" x="761" y="191" text-anchor="middle" style="font-size:11px">DEL FUEGO</text>
         </g>
-        <text class="kw-pending" x="761" y="243" text-anchor="middle">PENDIENTE —</text>
-        <text class="kw-pending" x="761" y="259" text-anchor="middle">cargar idea</text>
       </svg>
 
       <!-- MOBILE: columna vertical, viewBox angosto para que el texto no quede diminuto -->
-      <svg class="map map-mobile" viewBox="0 0 400 700" role="group" aria-label="La Ley de Inviolabilidad y las cuatro leyes que modifica">
-        <line class="thread strong" x1="200" y1="105" x2="200" y2="560"/>
-        <line class="thread" x1="200" y1="170" x2="114" y2="170"/>
-        <line class="thread" x1="200" y1="300" x2="114" y2="300"/>
-        <line class="thread" x1="200" y1="430" x2="114" y2="430"/>
-        <line class="thread" x1="200" y1="560" x2="114" y2="560"/>
+      <svg class="map map-mobile" viewBox="0 0 400 380" role="group" aria-label="La Ley de Inviolabilidad y las cuatro leyes que modifica">
+        <line class="thread strong" x1="200" y1="97" x2="200" y2="118"/>
+        <line class="thread" x1="110" y1="118" x2="290" y2="118"/>
+        <line class="thread" x1="110" y1="118" x2="110" y2="144"/>
+        <line class="thread" x1="290" y1="118" x2="290" y2="144"/>
+        <line class="thread strong" x1="200" y1="118" x2="200" y2="250"/>
+        <line class="thread" x1="110" y1="250" x2="290" y2="250"/>
+        <line class="thread" x1="110" y1="250" x2="110" y2="264"/>
+        <line class="thread" x1="290" y1="250" x2="290" y2="264"/>
 
         <g class="node central" data-node="0" tabindex="0" role="button" aria-label="Ley de Inviolabilidad de la Propiedad Privada">
-          <rect class="core-rect" x="40" y="15" width="320" height="82" rx="6"/>
+          <rect class="core-rect" x="20" y="15" width="360" height="82" rx="6"/>
           <text class="lbl-box" x="200" y="46" text-anchor="middle" style="font-size:15px">LEY DE INVIOLABILIDAD</text>
           <text class="lbl-box" x="200" y="65" text-anchor="middle" style="font-size:15px">DE LA PROPIEDAD PRIVADA</text>
           <text class="sub-box" x="200" y="86" text-anchor="middle" style="font-size:10px">se vota 16/07 · toca cuatro leyes a la vez</text>
         </g>
 
         <g class="node" data-node="1" tabindex="0" role="button" aria-label="Ley de Tierras">
-          <circle class="core" cx="80" cy="170" r="34"/>
-          <text class="lbl" x="80" y="166" text-anchor="middle" style="font-size:9.5px">LEY DE</text>
-          <text class="lbl" x="80" y="178" text-anchor="middle" style="font-size:9.5px">TIERRAS</text>
+          <circle class="core" cx="110" cy="190" r="46"/>
+          <text class="lbl" x="110" y="185" text-anchor="middle" style="font-size:12px">LEY DE</text>
+          <text class="lbl" x="110" y="199" text-anchor="middle" style="font-size:12px">TIERRAS</text>
         </g>
-        <text class="kw" x="126" y="160"><tspan x="126">Elimina el tope del 15%</tspan><tspan x="126" dy="15">a la propiedad extranjera</tspan></text>
-        <text class="kw-ref" x="126" y="194">Ley 26.737</text>
 
         <g class="node" data-node="2" tabindex="0" role="button" aria-label="Expropiaciones">
-          <circle class="core" cx="80" cy="300" r="34"/>
-          <text class="lbl" x="80" y="296" text-anchor="middle" style="font-size:9px">EXPRO-</text>
-          <text class="lbl" x="80" y="308" text-anchor="middle" style="font-size:9px">PIACIONES</text>
+          <circle class="core" cx="290" cy="190" r="46"/>
+          <text class="lbl" x="290" y="185" text-anchor="middle" style="font-size:11px">EXPRO-</text>
+          <text class="lbl" x="290" y="199" text-anchor="middle" style="font-size:11px">PIACIONES</text>
         </g>
-        <text class="kw-pending" x="126" y="304">PENDIENTE — cargar idea</text>
 
         <g class="node" data-node="3" tabindex="0" role="button" aria-label="Desalojos">
-          <circle class="core" cx="80" cy="430" r="34"/>
-          <text class="lbl" x="80" y="434" text-anchor="middle" style="font-size:9.5px">DESALOJOS</text>
+          <circle class="core" cx="110" cy="310" r="46"/>
+          <text class="lbl" x="110" y="315" text-anchor="middle" style="font-size:12px">DESALOJOS</text>
         </g>
-        <text class="kw-pending" x="126" y="434">PENDIENTE — cargar idea</text>
 
         <g class="node" data-node="4" tabindex="0" role="button" aria-label="Manejo del Fuego">
-          <circle class="core" cx="80" cy="560" r="34"/>
-          <text class="lbl" x="80" y="556" text-anchor="middle" style="font-size:9.5px">MANEJO</text>
-          <text class="lbl" x="80" y="568" text-anchor="middle" style="font-size:9.5px">DEL FUEGO</text>
+          <circle class="core" cx="290" cy="310" r="46"/>
+          <text class="lbl" x="290" y="305" text-anchor="middle" style="font-size:12px">MANEJO</text>
+          <text class="lbl" x="290" y="319" text-anchor="middle" style="font-size:12px">DEL FUEGO</text>
         </g>
-        <text class="kw-pending" x="126" y="564">PENDIENTE — cargar idea</text>
       </svg>
+      <div class="map-hint">Tocá el nodo para saber más.</div>
     </div>
 
     <!-- dossier -->
@@ -468,69 +471,17 @@
 <section id="convocatoria">
   <div class="wrap">
     <div class="ask">
-      <div class="sec-head"><span class="sec-num">02</span><span class="sec-title" style="color:var(--paper)">La convocatoria</span></div>
-      <h2>Ese día,<br>estar ahí importa</h2>
-      <p style="margin-top:16px;max-width:560px;color:rgba(228,229,223,.85)">Cargá una vez los datos de la concentración y quedan fijos en la placa y en el mensaje de difusión. Estos campos los completa quien coordina —no las agrupaciones.</p>
-      <div class="fields">
-        <label><span class="flabel">Hora</span><input id="f-hora" type="text" placeholder="PENDIENTE — ej. 14:00 hs"></label>
-        <label><span class="flabel">Punto de concentración</span><input id="f-lugar" type="text" placeholder="PENDIENTE — ej. Congreso, Rivadavia y Callao"></label>
-      </div>
-      <p class="note">→ mientras diga PENDIENTE, la placa y el mensaje muestran el aviso. Confirmá el dato con las agrupaciones antes de difundir.</p>
+      <h2><span class="seal">Estar ahí importa</span></h2>
+      <p style="margin-top:16px;max-width:560px;color:rgba(228,229,223,.85)">La circulación también es una forma de disputa. Reenviá el mensaje, no hace falta pertenecer a ninguna organización. Si representás una, generá tu placa con tu logo y tus colores.</p>
     </div>
   </div>
 </section>
 
 <!-- GENERATOR -->
-<section id="placa">
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">Tu placa</span></div>
-    <p class="sec-sub">Poné tu logo, tu nombre y tu color. La información verificada no se puede tocar: viaja igual en todas las placas. Descargás una imagen lista para Instagram y WhatsApp.</p>
-
-    <div class="gen-grid">
-      <div class="controls">
-        <div class="ctl">
-          <div class="clabel"><span>Tu logo</span><span>editable</span></div>
-          <label class="upload" id="uplabel" for="logo-input">＋ subir logo (PNG con fondo transparente)</label>
-          <input id="logo-input" type="file" accept="image/*" hidden>
-        </div>
-        <div class="ctl">
-          <div class="clabel"><span>Nombre de tu agrupación</span><span>editable</span></div>
-          <input id="c-name" type="text" placeholder="Ej. Asamblea del Arroyo" maxlength="42">
-        </div>
-        <div class="ctl">
-          <div class="clabel"><span>Color de acento</span><span>editable</span></div>
-          <div class="swatches" id="swatches">
-            <div class="swatch on" style="background:#9E2B25" data-c="#9E2B25"></div>
-            <div class="swatch" style="background:#1C2024" data-c="#1C2024"></div>
-            <div class="swatch" style="background:#3E5B6A" data-c="#3E5B6A"></div>
-            <div class="swatch" style="background:#3A5A3E" data-c="#3A5A3E"></div>
-            <div class="swatch" style="background:#8A5A1E" data-c="#8A5A1E"></div>
-            <div class="swatch" style="background:#5A2A5A" data-c="#5A2A5A"></div>
-          </div>
-        </div>
-        <div class="ctl">
-          <div class="clabel"><span>Información</span><span class="lock">🔒 fija · no editable</span></div>
-          <div class="fixed-box">
-            <div class="fx"><span class="mono">QUÉ</span><span>Ley de Inviolabilidad de la Propiedad Privada</span></div>
-            <div class="fx"><span class="mono">DEROGA</span><span>límites a la venta de tierra rural a extranjeros (Ley 26.737)</span></div>
-            <div class="fx"><span class="mono">CUÁNDO</span><span>Jueves 16/07 · Senado (sesión prevista)</span></div>
-            <div class="fx"><span class="mono">LINK</span><span>mapavivo.net</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="preview-col">
-        <canvas id="canvas" width="1080" height="1080" aria-label="Vista previa de la placa"></canvas>
-        <button class="btn" id="download">↓ Descargar placa (1080×1080)</button>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- SHARE -->
 <section id="difundir">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">Difundir</span></div>
+    <div class="sec-head"><span class="sec-title">Difundir</span></div>
     <p class="sec-sub">Copiá el mensaje ya escrito y mandalo a tus grupos. Cuando el link se pega en WhatsApp, aparece solo la tarjeta con la placa.</p>
 
     <div class="share-card">
@@ -548,22 +499,88 @@
   </div>
 </section>
 
+<section id="placa">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-title">La placa</span></div>
+    <p class="sec-sub">Descargala tal cual, no hace falta ser de ninguna agrupación — con eso alcanza para compartir. Si representás una organización, segui completando los campos para personalizarla con tu logo, tu color y tu convocatoria.</p>
+
+    <div class="gen-grid">
+      <div class="controls">
+        <div class="ctl">
+          <div class="clabel"><span>Información</span><span class="lock">🔒 fija · no editable</span></div>
+          <div class="fixed-box">
+            <div class="fx"><span class="mono">QUÉ</span><span>Ley de Inviolabilidad de la Propiedad Privada</span></div>
+            <div class="fx"><span class="mono">DEROGA</span><span>límites a la venta de tierra rural a extranjeros (Ley 26.737)</span></div>
+            <div class="fx"><span class="mono">SE VOTA</span><span>Jueves 16/07 · Senado (sesión prevista)</span></div>
+            <div class="fx"><span class="mono">LINK</span><span>mapavivo.ar</span></div>
+          </div>
+        </div>
+
+        <div class="org-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open')">
+          <span class="org-arrow">▸</span> ¿Representás una agrupación? Personalizá tu placa
+        </div>
+        <div class="org-fields">
+          <div class="ctl">
+            <div class="clabel"><span>Tu logo</span><span>editable</span></div>
+            <label class="upload" id="uplabel" for="logo-input">＋ subir logo (PNG con fondo transparente)</label>
+            <input id="logo-input" type="file" accept="image/*" hidden>
+          </div>
+          <div class="ctl">
+            <div class="clabel"><span>Nombre de tu agrupación</span><span>editable</span></div>
+            <input id="c-name" type="text" placeholder="Ej. Asamblea del Arroyo" maxlength="42">
+          </div>
+          <div class="ctl">
+            <div class="clabel"><span>Color de acento</span><span>editable</span></div>
+            <div class="swatches" id="swatches">
+              <div class="swatch on" style="background:#9E2B25" data-c="#9E2B25"></div>
+              <div class="swatch" style="background:#1C2024" data-c="#1C2024"></div>
+              <div class="swatch" style="background:#3E5B6A" data-c="#3E5B6A"></div>
+              <div class="swatch" style="background:#3A5A3E" data-c="#3A5A3E"></div>
+              <div class="swatch" style="background:#8A5A1E" data-c="#8A5A1E"></div>
+              <div class="swatch" style="background:#5A2A5A" data-c="#5A2A5A"></div>
+            </div>
+          </div>
+          <div class="ctl">
+            <div class="clabel"><span>Ubicación de tu convocatoria</span><span>editable</span></div>
+            <input id="f-lugar" type="text" placeholder="PENDIENTE — ej. Congreso, Rivadavia y Callao">
+            <p class="ctl-hint">Por defecto es Buenos Aires. Si tu convocatoria es en otro lugar, cambiala acá.</p>
+          </div>
+          <div class="ctl">
+            <div class="clabel"><span>Día y horario de tu convocatoria</span><span>editable</span></div>
+            <input id="f-hora" type="text" placeholder="PENDIENTE — ej. Jueves 16/07 · 14:00 hs">
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-col">
+        <canvas id="canvas" width="1080" height="1080" aria-label="Vista previa de la placa"></canvas>
+        <button class="btn" id="download">↓ Descargar placa (1080×1080)</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap foot-grid">
     <div class="foot-note">
-      <b>MAPA VIVO</b> · registro de datos públicos<br>
+      <b>MAPA VIVO</b><br>
       El mapa no concluye: muestra únicamente datos verificados y deja que el patrón emerja.<br><br>
       <b>Fuentes:</b> Senado de la Nación (dictámenes) · CELS · Chequeado · Palabras del Derecho.<br>
       Expediente PE-13/2026 · Mensaje 22/26 · ingresado 27/03/2026.<br>
       Sesión marcada como <b>prevista</b>: el tratamiento fue postergado en ocasiones anteriores.
     </div>
-    <div class="principle">Solo datos verificados. Nada de números inventados. Donde falta confirmación, se dice <span class="pending" style="font-size:10px;padding:1px 5px">PENDIENTE</span>.</div>
+    <div class="principle">Solo datos verificados. Nada de números inventados. Donde falta confirmación, se dice <span class="pending" style="font-size:10px;padding:1px 5px">PENDIENTE</span>.
+      <button class="print-btn" onclick="window.print()" style="margin-top:12px;display:block">⎙ Versión imprimible</button>
+    </div>
   </div>
 </footer>
 
 <div class="toast" id="toast"></div>
 
 <script>
+/* Interruptor único: si más adelante se decide sumar el bloque de Desarrollo, cambiar a true */
+const SHOW_DEV = false;
+
 /* ---------- DATA: dossiers ----------
    Esqueleto FIJO de 4 puntos por nodo (mismas 4 preguntas en todos → el patrón se ve solo).
    Cada punto: [label, valor, verificado?]  verificado=false muestra aviso PENDIENTE. */
@@ -583,13 +600,18 @@ const NODES = {
     title:"Ley de Tierras Rurales 26.737",
     flag:{t:"TIERRAS · SE VACÍA",c:"flag-loss"},
     points:[
-      ["Qué protege hoy","Ningún extranjero puede tener más del 15% de la tierra rural del país — ese tope se aplica también por provincia y por municipio. Dentro de ese 15%, ninguna nacionalidad puede quedarse con más del 30%. Y nadie puede superar las 1.000 hectáreas en la \"zona núcleo\" (las tierras más productivas).",true],
-      ["Por qué importa","A nivel país, solo el 6% de la tierra rural es extranjera — muy por debajo del límite del 15%. Pero ese promedio esconde lo que pasa en zonas puntuales: en Tinogasta (Catamarca) ya es 27%, y hay zonas de la región pampeana que superan el 30%. El problema no es el promedio nacional, es dónde se concentra.",true],
-      ["Qué elimina","Esto no cambia nada para nadie que sea argentino: comprás y vendés tierra rural como siempre. Lo que desaparece es el límite que tenían los extranjeros privados —personas, fondos, corporaciones— para comprar sin tope. Solo sigue restringido un Estado extranjero comprando directamente. Y como comprar grandes extensiones requiere capital, el efecto real recae sobre todo en fondos de inversión y corporaciones extranjeras, no en pequeños compradores.",true],
-      ["A quién beneficia","Imaginate el límite: hoy nadie puede tener más de 1.000 hectáreas en la zona más productiva. Sin ese tope, alguien podría juntar una superficie del tamaño de la provincia de Misiones sin pedir ningún permiso especial. Las tierras con ríos o en zona de frontera siguen protegidas en el papel — pero con una salvedad: el Poder Ejecutivo puede autorizar excepciones si decide que no hay riesgo para la soberanía. Esa decisión ya no pasa por el Congreso.",true]
+      ["Qué protege hoy","<strong>Ningún extranjero puede tener más del 15% de la tierra rural del país</strong> — ese tope se aplica también por provincia y por municipio. Dentro de ese 15%, ninguna nacionalidad puede quedarse con más del 30%. Y nadie puede superar las 1.000 hectáreas en la \"zona núcleo\" (las tierras más productivas).",true],
+      ["Por qué importa","A nivel país, solo el 6% de la tierra rural es extranjera — muy por debajo del límite del 15%. Pero ese promedio esconde lo que pasa en zonas puntuales: <strong>en Tinogasta (Catamarca) ya es 27%, y hay zonas de la región pampeana que superan el 30%</strong>. El problema no es el promedio nacional, es dónde se concentra.",true],
+      ["Qué elimina","<strong>Esto no cambia nada para nadie que sea argentino: comprás y vendés tierra rural como siempre.</strong> Lo que desaparece es el límite que tenían los extranjeros privados —personas, fondos, corporaciones— para comprar sin tope. Solo sigue restringido un Estado extranjero comprando directamente. Y como comprar grandes extensiones requiere capital, el efecto real recae sobre todo en fondos de inversión y corporaciones extranjeras, no en pequeños compradores.",true],
+      ["A quién beneficia","Imaginate el límite: hoy nadie puede tener más de 1.000 hectáreas en la zona más productiva. <strong>Sin ese tope, alguien podría juntar una superficie del tamaño de la provincia de Misiones sin pedir ningún permiso especial.</strong> Las tierras con ríos o en zona de frontera siguen protegidas en el papel — pero con una salvedad: el Poder Ejecutivo puede autorizar excepciones si decide que no hay riesgo para la soberanía. Esa decisión ya no pasa por el Congreso.",true]
+    ],
+    tags:[
+      ["DESPOJO","se quita una protección que ya existía (los topes de 15%, 30% y 1.000 ha)"],
+      ["EXTRACTIVISMO: TIERRA","el recurso concreto en juego es la tierra rural"],
+      ["CUERPOS-TERRITORIOS EN DISPUTA","comunidades rurales, pequeños productores, pueblos originarios en zona de frontera"]
     ],
     src:"Boletín Oficial — Ley 26.737 (arts. 8, 9 y 10) · El Cronista · Chequeado",
-    dev:"Esta no es la primera vez. En 2023, a los pocos días de asumir, Milei ya intentó derogar esta misma ley por decreto (DNU 70/23). La Justicia lo frenó con una cautelar que hoy sigue en la Corte Suprema. El proyecto que se vota el 16 es el segundo intento de lograr lo mismo, esta vez por ley — y por eso importa entender qué patrón repite. PENDIENTE — seguir el desarrollo: cómo esto conecta con el mecanismo que se repite en Súper RIGI, Antártida y AySA/Mekorot.",
+    dev:"Esta no es la primera vez. En 2023, a los pocos días de asumir, Milei ya intentó derogar esta misma ley por decreto (DNU 70/23). La Justicia lo frenó con una cautelar que hoy sigue en la Corte Suprema. El proyecto que se vota el 16 es el segundo intento de lograr lo mismo, esta vez por ley — y por eso importa entender qué patrón repite. PENDIENTE — seguir el desarrollo: cómo esto conecta con el mecanismo que se repite en Súper RIGI, Antártida y AySA/Mekorot, y sumar una comparación con cómo regulan esto otros países (quién limita la compra de tierra a extranjeros, quién no, y con qué resultado).",
     docUrl:"docs/ley-26737-texto-sancionado.pdf",
     docLabel:"Ley 26.737 — texto sancionado (PDF, registrada 22/12/2011)"
   },
@@ -597,34 +619,34 @@ const NODES = {
     title:"Régimen de Expropiaciones",
     flag:{t:"EXPROPIACIONES",c:"flag-node"},
     points:[
-      ["Qué cambia","PENDIENTE — cargar qué modifica sobre la Ley de Expropiaciones 21.499.",false],
-      ["Qué se pierde","PENDIENTE — cargar el mecanismo (interpretación restrictiva de utilidad pública, lucro cesante, etc.).",false],
-      ["A quién afecta","PENDIENTE — cargar con fuente.",false],
-      ["Estado","PENDIENTE — parte del mismo proyecto que se vota el 16.",false]
+      ["Qué protege hoy","Hoy, para expropiar, alcanza con que el Estado invoque \"utilidad pública\", sin un test único y estricto sobre qué tan justificado tiene que estar ese fin. La indemnización cubre el valor del bien y los daños directos.",true],
+      ["Qué elimina","El proyecto exige que la \"utilidad pública\" se interprete de forma restrictiva y pase un test de tres pasos: <strong>que el fin sea específico y concreto, y que la medida sea idónea, necesaria y proporcional</strong>. Además suma el lucro cesante (la ganancia que se deja de percibir) a la indemnización — con techo: no puede superar el 30% del daño directo, salvo que el expropiado pruebe más.",true],
+      ["Por qué importa","El Gobierno dice que esto da más seguridad jurídica y evita que el Estado se demore en pagar. Pero en la práctica, <strong>subir el estándar para expropiar y sumarle costo a la indemnización hace más difícil y más caro que el Estado avance sobre una propiedad</strong> — para una obra pública, una regularización de tierras, o cualquier política que necesite mover al dueño actual. También crea la \"expropiación indirecta\": si una regulación (ambiental, urbana, de precios) le saca al dueño el uso o el valor de su bien sin transferirle la propiedad, se puede reclamar como si fuera una expropiación.",true],
+      ["A quién beneficia","Gana quien tiene una propiedad grande o una inversión que el Estado podría necesitar tocar — desde un terrateniente hasta un fondo de inversión — porque <strong>le sube el piso de protección y le garantiza cobrar más</strong>. La nueva figura de \"expropiación regulatoria\" además abre una vía para cuestionar leyes ambientales o de planificación urbana que un privado sienta que le devalúan su propiedad sin decirlo.",true]
     ],
-    src:"— cargar cita oficial"
+    src:"El Cronista · Chequeado · Ley 21.499 (reforma) · Canosa Abogados"
   },
   3:{
     title:"Régimen de Desalojos",
     flag:{t:"DESALOJOS",c:"flag-node"},
     points:[
-      ["Qué cambia","PENDIENTE — cargar qué modifica sobre el Código Procesal Civil y Comercial.",false],
-      ["Qué habilita","PENDIENTE — cargar el mecanismo (desalojos exprés, plazos, etc.).",false],
-      ["A quién afecta","PENDIENTE — cargar con fuente.",false],
-      ["Estado","PENDIENTE — parte del mismo proyecto que se vota el 16.",false]
+      ["Qué protege hoy","<strong>Hoy, para desalojar a alguien antes de la sentencia final, el dueño tiene que dar una garantía económica real (caución real).</strong> El juicio va por la vía ordinaria, con más tiempo para que la persona ocupante presente pruebas y se defienda.",true],
+      ["Qué elimina","Todos los desalojos (urbanos y rurales) pasarían al trámite <strong>sumarísimo</strong>, el más rápido del Código Procesal. Y la caución real se reemplaza por una <strong>simple declaración jurada del propietario, sin respaldo económico</strong>, para pedir la desocupación anticipada antes de que termine el juicio.",true],
+      ["Por qué importa","El Gobierno dice que esto es para no dejar indefenso al dueño frente a los \"okupas\" y para bajar el precio de los alquileres. Pero <strong>el cambio es parejo para todos los desalojos, no solo usurpaciones: también corre para un inquilino que se atrasó con el pago del alquiler</strong>. Rige solo en CABA (cada provincia tiene su propio código y decide si copia la reforma). El único freno que le puso el Senado fue estirar de 3 a 10 días el aviso previo por falta de pago.",true],
+      ["A quién beneficia","Gana quien alquila o cede un inmueble y quiere recuperarlo rápido, sin depender de un juicio largo ni poner plata en garantía. <strong>El capítulo que tocaba los barrios populares (la suspensión de desalojos de la Ley 27.453 hasta 2032) se retiró del dictamen final</strong> — por ahora, esa protección específica no cambia con este proyecto.",true]
     ],
-    src:"— cargar cita oficial"
+    src:"Chequeado · La Tinta · CELS · Código Procesal Civil y Comercial (arts. 679, 680 bis)"
   },
   4:{
     title:"Ley de Manejo del Fuego",
     flag:{t:"MANEJO DEL FUEGO",c:"flag-node"},
     points:[
-      ["Qué cambia","PENDIENTE — cargar qué modifica sobre la Ley 26.815.",false],
-      ["Qué habilita","PENDIENTE — cargar el mecanismo (cambio de uso del suelo en zonas quemadas, etc.).",false],
-      ["A quién afecta","PENDIENTE — cargar con fuente.",false],
-      ["Estado","PENDIENTE — parte del mismo proyecto que se vota el 16.",false]
+      ["Qué protege hoy","<strong>Si un campo o un bosque se incendia, hoy no se le puede cambiar el uso del suelo por años</strong>: 60 años para bosques nativos, áreas protegidas y humedales; 30 años para pastizales y zonas agropecuarias. En ese tiempo no se puede lotear, desarrollar un emprendimiento inmobiliario ni cambiar la actividad productiva.",true],
+      ["Por qué importa","<strong>La ley existe para que nadie se beneficie económicamente de un incendio</strong> — que un bosque se queme y al poco tiempo aparezca ahí un loteo o un campo distinto. Los incendios arrasan miles de hectáreas por año en Argentina; sin este freno, quemar se vuelve un atajo para cambiarle el destino a la tierra.",true],
+      ["Qué elimina","El proyecto mantiene una prohibición para bosques nativos, pero le saca el plazo de 60 años y buena parte de las restricciones. Y hace desaparecer directamente la protección para humedales, áreas protegidas, tierras fiscales y loteos — deroga el artículo que protegía pastizales y zonas agropecuarias enteras. <strong>Lo que la ley no nombra, deja de estar protegido.</strong>",true],
+      ["A quién beneficia","No es la primera vez que se apunta a esta ley: en 2023 ya se intentó por decreto (no prosperó), en 2025 se vació el Fondo Nacional de Manejo del Fuego y se bajó de rango su coordinación (de Ambiente a Seguridad). Mientras tanto, Parques Nacionales tiene 380 brigadistas cuando necesitaría 600, y el Servicio Nacional de Manejo del Fuego 130 cuando debería tener el doble. <strong>Quien gana no es quien combate el fuego — es quien puede convertir la tierra quemada en negocio más rápido.</strong>",true]
     ],
-    src:"— cargar cita oficial"
+    src:"Revista Sudestada (Natalia Mazzei) · Ley 26.815 y modif. 2020 · ATE Nacional"
   }
 };
 
@@ -636,7 +658,7 @@ function renderNode(n){
     const val=p[2]?p[1]:`<span class="pending">PENDIENTE — ${p[1]}</span>`;
     return `<div class="pt${p[2]?'':' pt-pending'}"><span class="pt-n">0${i+1}</span><div class="pt-body"><div class="pt-k">${p[0]}</div><div class="pt-v">${val}</div></div></div>`;
   }).join('');
-  dossier.innerHTML=`<div class="d-top"><h3>${d.title}</h3><span class="d-flag ${d.flag.c}">${d.flag.t}</span></div><div class="d-body"><div class="pts">${pts}</div>${d.dev?`<div class="d-dev"><div class="d-dev-label" onclick="this.parentElement.classList.toggle('open')"><span class="d-dev-arrow">▸</span> DESARROLLO</div><p class="d-dev-text">${d.dev}</p></div>`:''}<div class="d-src"><span class="src">FUENTE · ${d.src}</span>${d.docUrl?`<a class="doc-btn" href="${d.docUrl}" target="_blank" rel="noopener" download>↓ ${d.docLabel||'Descargar documento oficial'}</a>`:''}</div></div>`;
+  dossier.innerHTML=`<div class="d-top"><h3>${d.title}</h3><span class="d-flag ${d.flag.c}">${d.flag.t}</span></div><div class="d-body"><div class="pts">${pts}</div>${SHOW_DEV&&d.dev?`<div class="d-dev"><div class="d-dev-label" onclick="this.parentElement.classList.toggle('open')"><span class="d-dev-arrow">▸</span> DESARROLLO</div><p class="d-dev-text">${d.dev}</p></div>`:''}<div class="d-src"><span class="src">FUENTE · ${d.src}</span>${d.docUrl?`<a class="doc-btn" href="${d.docUrl}" target="_blank" rel="noopener" download>↓ ${d.docLabel||'Descargar documento oficial'}</a>`:''}</div>${d.tags?`<div class="d-tags">${d.tags.map(t=>`<span class="tag-chip">${t[0]}</span>`).join('')}</div>`:''}</div>`;
   document.querySelectorAll('.node').forEach(g=>g.classList.toggle('active',g.dataset.node===String(n)));
 }
 document.querySelectorAll('.node').forEach(g=>{
@@ -655,8 +677,9 @@ function buildPrintableStack(){
       const val=p[2]?p[1]:`<span class="pending">PENDIENTE — ${p[1]}</span>`;
       return `<div class="pt${p[2]?'':' pt-pending'}"><span class="pt-n">0${i+1}</span><div class="pt-body"><div class="pt-k">${p[0]}</div><div class="pt-v">${val}</div></div></div>`;
     }).join('');
-    const dev=d.dev?`<div class="d-dev open"><div class="d-dev-label"><span class="d-dev-arrow">▸</span> DESARROLLO</div><p class="d-dev-text">${d.dev}</p></div>`:'';
-    return `<div class="dossier print-module"><div class="d-top"><h3>${d.title}</h3><span class="d-flag ${d.flag.c}">${d.flag.t}</span></div><div class="d-body"><div class="pts">${pts}</div>${dev}<div class="d-src"><span class="src">FUENTE · ${d.src}</span>${d.docUrl?`<a class="doc-btn" href="${d.docUrl}">↓ ${d.docLabel||'Documento oficial'}</a>`:''}</div></div></div>`;
+    const dev=SHOW_DEV&&d.dev?`<div class="d-dev open"><div class="d-dev-label"><span class="d-dev-arrow">▸</span> DESARROLLO</div><p class="d-dev-text">${d.dev}</p></div>`:'';
+    const tags=d.tags?`<div class="d-tags">${d.tags.map(t=>`<span class="tag-chip">${t[0]}</span>`).join('')}</div>`:'';
+    return `<div class="dossier print-module"><div class="d-top"><h3>${d.title}</h3><span class="d-flag ${d.flag.c}">${d.flag.t}</span></div><div class="d-body"><div class="pts">${pts}</div>${dev}<div class="d-src"><span class="src">FUENTE · ${d.src}</span>${d.docUrl?`<a class="doc-btn" href="${d.docUrl}">↓ ${d.docLabel||'Documento oficial'}</a>`:''}</div>${tags}</div></div>`;
   }).join('');
 }
 buildPrintableStack();
@@ -739,7 +762,7 @@ function draw(){
   cx.fillStyle='#E4E5DF';cx.font='700 30px "Archivo"';cx.textAlign='right';
   cx.fillText(state.name||'Convocan las agrupaciones',1008,970);
   cx.fillStyle=state.color;cx.font='700 24px "JetBrains Mono"';
-  cx.fillText('mapavivo.net',1008,1004);
+  cx.fillText('mapavivo.ar',1008,1004);
   cx.textAlign='left';
 }
 function wrap(t,x,y,max,lh){
@@ -769,11 +792,11 @@ Entre otras cosas, deroga los límites a la venta de tierra rural a capitales ex
 
 📍 Concentración: ${loc}
 
-Informate y difundí 👉 mapavivo.net`;
+Informate y difundí 👉 mapavivo.ar`;
 }
 buildMsg();
 
-const LINK='https://mapavivo.net';
+const LINK='https://mapavivo.ar';
 document.querySelectorAll('[data-share]').forEach(b=>{
   b.addEventListener('click',()=>{
     const t=msgEl.value, enc=encodeURIComponent(t);
