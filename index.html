@@ -630,7 +630,7 @@ document.querySelectorAll('.node').forEach(g=>{
   g.addEventListener('click',()=>renderNode(g.dataset.node));
   g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();renderNode(g.dataset.node);}});
 });
-renderNode(1);
+renderNode(0);
 
 /* ---------- versión imprimible: los 5 módulos apilados y ya expandidos ---------- */
 function buildPrintableStack(){
