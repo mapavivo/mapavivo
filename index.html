@@ -55,13 +55,7 @@
   }
   .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
   .brand{display:flex;align-items:baseline;gap:10px}
-  .brand b{
-     font-weight:400;
-     letter-spacing:-.02em;
-     font-size:19px;    
-     background: var(--mapa-red);
-     color: white;
-     padding: 0px 10px;}
+  .brand b{font-weight:900;letter-spacing:-.02em;font-size:19px}
   .brand span{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink-soft);text-transform:uppercase}
   .topbar .status{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mapa-red);letter-spacing:.06em;display:flex;align-items:center;gap:7px}
   .print-btn{
@@ -88,6 +82,7 @@
   }
   .mapa-red-text{color:var(--mapa-red)}
   .mapa-yellow-text{color:yellow}
+  .hl-yellow{background:#FFFF00;color:#111;padding:0 8px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
   .top-row{
     display:flex;gap:28px;align-items:stretch;flex-wrap:wrap;margin-top:22px;
   }
@@ -357,7 +352,7 @@
 
 <div class="topbar">
   <div class="wrap">
-    <div class="brand"><b>mapa vivo</b></div>
+    <div class="brand"><b>MAPA VIVO</b></div>
     <div class="status"><span class="dot"></span>SESIÓN PREVISTA · JUE 16/07</div>
   </div>
 </div>
@@ -367,7 +362,8 @@
   <div class="wrap">
     <div class="top-row">
       <div class="hero-box">
-        <h1>El jueves 16 de julio se vota qué se puede <span class="mapa-red-text">vender</span></h1>
+        <div class="eyebrow"><span class="tag urgent">JUEVES 16/07 · SENADO</span></div>
+        <h1>Este jueves 16, <span class="hl-yellow">nuestra soberanía está en juego</span></h1>
         <div class="countbar" id="countbar">
           <div class="cell hot"><div class="k">Faltan</div><div class="v" id="cd-days">—</div></div>
           <div class="cell"><div class="k">Cámara</div><div class="v">SENADO</div></div>
@@ -375,7 +371,7 @@
         </div>
       </div>
       <div class="lede-wrap">
-        <p class="lede">El Senado tiene prevista la sesión para tratar la <strong>Ley de Inviolabilidad de la Propiedad Privada</strong>. Entre otras cosas, deroga los artículos de la Ley de Tierras Rurales que hoy limitan la venta de tierra rural a capitales extranjeros. No es un caso aislado: es parte de un patrón. Este es el mapa.</p>
+        <p class="lede">Territorio, propiedad, vivienda — todo se decide en una sola sesión. El Senado tiene prevista la sesión para tratar la <strong>Ley de Inviolabilidad de la Propiedad Privada</strong>, que deroga los límites a la venta de tierra rural a capitales extranjeros. No es un caso aislado: es parte de un patrón. Este es el mapa.</p>
         <p class="lede">El mecanismo es el mismo en los cuatro: desregulación, blindaje legal y un actor extranjero sobre un recurso estratégico. Tocá cada nodo para leer el expediente.</p>
       </div>
     </div>
