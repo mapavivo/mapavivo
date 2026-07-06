@@ -55,7 +55,13 @@
   }
   .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
   .brand{display:flex;align-items:baseline;gap:10px}
-  .brand b{font-weight:900;letter-spacing:-.02em;font-size:19px}
+  .brand b{
+     font-weight:400;
+     letter-spacing:-.02em;
+     font-size:19px;    
+     background: var(--mapa-red);
+     color: white;
+     padding: 0px 10px;}
   .brand span{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink-soft);text-transform:uppercase}
   .topbar .status{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mapa-red);letter-spacing:.06em;display:flex;align-items:center;gap:7px}
   .print-btn{
@@ -351,7 +357,7 @@
 
 <div class="topbar">
   <div class="wrap">
-    <div class="brand"><b>MAPA VIVO</b></div>
+    <div class="brand"><b>mapa vivo</b></div>
     <div class="status"><span class="dot"></span>SESIÓN PREVISTA · JUE 16/07</div>
   </div>
 </div>
