@@ -271,73 +271,12 @@
 
 <div class="toast" id="toast"></div>
 
+<script src="data.js"></script>
 <script>
 /* Interruptor único: si más adelante se decide sumar el bloque de Desarrollo, cambiar a true */
 const SHOW_DEV = false;
 
-/* ---------- DATA: dossiers ----------
-   Esqueleto FIJO de 4 puntos por nodo (mismas 4 preguntas en todos → el patrón se ve solo).
-   Cada punto: [label, valor, verificado?]  verificado=false muestra aviso PENDIENTE. */
-const NODES = {
-  0:{
-    title:"Ley de Inviolabilidad de la Propiedad Privada",
-    flag:{t:"● SE VOTA EL 16/07",c:"flag-urgent"},
-    points:[],
-    src:""
-  },
-  1:{
-    title:"Ley de Tierras Rurales 26.737",
-    flag:{t:"TIERRAS · SE VACÍA",c:"flag-loss"},
-    points:[
-      ["Qué protege hoy","<strong>Ningún extranjero puede tener más del 15% de la tierra rural del país</strong> — ese tope se aplica también por provincia y por municipio. Dentro de ese 15%, ninguna nacionalidad puede quedarse con más del 30%. Y nadie puede superar las 1.000 hectáreas en la \"zona núcleo\" (las tierras más productivas).",true],
-      ["Por qué importa","A nivel país, solo el 6% de la tierra rural es extranjera — muy por debajo del límite del 15%. Pero ese promedio esconde lo que pasa en zonas puntuales: <strong>en Tinogasta (Catamarca) ya es 27%, y hay zonas de la región pampeana que superan el 30%</strong>. El problema no es el promedio nacional, es dónde se concentra.",true],
-      ["Qué elimina","El tope nacional del 15% desaparece. En su lugar, cada provincia decide si autoriza, regula o prohíbe la venta de tierra a extranjeros en su territorio — inclusive en zona de frontera, hoy protegida de forma reforzada a nivel federal. En el debate en el Senado, la senadora Ana Marks (Río Negro) lo describió como <strong>'federalismo de fragmentación'</strong>: 24 criterios distintos en vez de uno solo. Sigue restringida la compra directa por parte de un Estado extranjero.",true],
-      ["A quién beneficia","El caso más conocido de este mecanismo ya tiene nombre: <strong>Lago Escondido, en Río Negro</strong>, donde un magnate extranjero controla el acceso a un lago entero sin que haya forma legal de garantizar el paso público. Sin el tope nacional, ese tipo de concentración pasa a depender de si la provincia donde está el terreno decide ponerle un límite o no — y eso puede cambiar con cada gobierno provincial.",true]
-    ],
-    tags:[
-      ["DESPOJO","se quita una protección que ya existía (los topes de 15%, 30% y 1.000 ha)"],
-      ["EXTRACTIVISMO: TIERRA","el recurso concreto en juego es la tierra rural"],
-      ["CUERPOS-TERRITORIOS EN DISPUTA","comunidades rurales, pequeños productores, pueblos originarios en zona de frontera"]
-    ],
-    src:"Boletín Oficial — Ley 26.737 (arts. 8, 9 y 10) · El Cronista · Chequeado",
-    dev:"Esta no es la primera vez. En 2023, a los pocos días de asumir, Milei ya intentó derogar esta misma ley por decreto (DNU 70/23). La Justicia lo frenó con una cautelar que hoy sigue en la Corte Suprema. El proyecto que se vota el 16 es el segundo intento de lograr lo mismo, esta vez por ley — y por eso importa entender qué patrón repite. PENDIENTE — seguir el desarrollo: cómo esto conecta con el mecanismo que se repite en Súper RIGI, Antártida y AySA/Mekorot, y sumar una comparación con cómo regulan esto otros países (quién limita la compra de tierra a extranjeros, quién no, y con qué resultado).",
-    docUrl:"docs/ley-26737-texto-sancionado.pdf",
-    docLabel:"Ley 26.737 — texto sancionado (PDF, registrada 22/12/2011)"
-  },
-  2:{
-    title:"Régimen de Expropiaciones",
-    flag:{t:"EXPROPIACIONES",c:"flag-node"},
-    points:[
-      ["Qué protege hoy","Hoy, para expropiar, alcanza con que el Estado invoque \"utilidad pública\", sin un test único y estricto sobre qué tan justificado tiene que estar ese fin. La indemnización cubre el valor del bien y los daños directos.",true],
-      ["Qué elimina","El proyecto exige que la \"utilidad pública\" se interprete de forma restrictiva y pase un test de tres pasos: <strong>que el fin sea específico y concreto, y que la medida sea idónea, necesaria y proporcional</strong>. Suma el lucro cesante a la indemnización, con techo del 30% del daño directo. Y agrega una traba adicional: <strong>no puede haber transferencia de dominio sin que el Estado haya pagado la indemnización completa por adelantado</strong> — hoy puede tomar posesión y seguir discutiendo el monto después.",true],
-      ["Por qué importa","El Gobierno dice que esto da más seguridad jurídica y evita que el Estado se demore en pagar. Pero en la práctica, <strong>subir el estándar para expropiar y sumarle costo a la indemnización hace más difícil y más caro que el Estado avance sobre una propiedad</strong> — para una obra pública, una regularización de tierras, o cualquier política que necesite mover al dueño actual. También crea la \"expropiación indirecta\": si una regulación (ambiental, urbana, de precios) le saca al dueño el uso o el valor de su bien sin transferirle la propiedad, se puede reclamar como si fuera una expropiación. También le pone límite de tiempo a una figura menos conocida: la <strong>'ocupación temporánea anormal'</strong> (cuando el Estado usa un bien de forma transitoria sin expropiarlo, por ejemplo para una obra). Hoy no tiene plazo; el proyecto lo limita a 90 días, después de los cuales el Estado tiene que devolverlo o expropiarlo formalmente.",true],
-      ["A quién beneficia","Gana quien tiene una propiedad grande o una inversión que el Estado podría necesitar tocar — desde un terrateniente hasta un fondo de inversión — porque <strong>le sube el piso de protección y le garantiza cobrar más</strong>. La nueva figura de \"expropiación regulatoria\" además abre una vía para cuestionar leyes ambientales o de planificación urbana que un privado sienta que le devalúen su propiedad sin decirlo.",true]
-    ],
-    src:"El Cronista · Chequeado · Ley 21.499 (reforma) · Canosa Abogados · Ámbito (declaraciones ante Comisión de Ciencia, Senado)"
-  },
-  3:{
-    title:"Régimen de Desalojos",
-    flag:{t:"DESALOJOS",c:"flag-node"},
-    points:[
-      ["Qué protege hoy","<strong>Hoy, para desalojar a alguien antes de la sentencia final, el dueño tiene que dar una garantía económica real (caución real).</strong> El juicio va por la vía ordinaria, con más tiempo para que la persona ocupante presente pruebas y se defienda.",true],
-      ["Qué elimina","El trámite <strong>sumarísimo</strong> — el más rápido del Código Procesal — se aplica específicamente a inmuebles usurpados. Ahí, la caución real se reemplaza por una <strong>simple declaración jurada del propietario, sin respaldo económico</strong>, para pedir la desocupación anticipada antes de que termine el juicio. Para el resto de los casos —como un inquilino atrasado con el alquiler— se mantiene el proceso ordinario, con el plazo de intimación estirado de 3 a 10 días.",true],
-      ["Por qué importa","El Gobierno dice que esto es para no dejar indefenso al dueño frente a los \"okupas\". A diferencia de lo que se discutió en el debate inicial, <strong>el texto final acotó el trámite exprés solo a usurpación</strong> — no alcanza a cualquier desalojo. Rige solo en CABA (cada provincia decide si copia la reforma).",true],
-      ["A quién beneficia","Gana quien tiene un inmueble usurpado y quiere recuperarlo rápido, sin depender de un juicio largo ni poner plata en garantía. <strong>El capítulo que tocaba los barrios populares (la suspensión de desalojos de la Ley 27.453/RENABAP hasta 2032) se retiró del dictamen final</strong> — por ahora, esa protección específica no cambia.",true]
-    ],
-    src:"Perfil · Ámbito · Chequeado · La Tinta · CELS · Código Procesal Civil y Comercial (arts. 679, 680 bis) · APDH (declaración 28/05/2026)"
-  },
-  4:{
-    title:"Ley de Manejo del Fuego",
-    flag:{t:"MANEJO DEL FUEGO",c:"flag-node"},
-    points:[
-      ["Qué protege hoy","<strong>Si un campo o un bosque se incendia, hoy no se le puede cambiar el uso del suelo por años</strong>: 60 años para bosques nativos, áreas protegidas y humedales; 30 años para pastizales y zonas agropecuarias. En ese tiempo no se puede lotear, desarrollar un emprendimiento inmobiliario ni cambiar la actividad productiva.",true],
-      ["Por qué importa","<strong>La ley existe para que nadie se beneficie económicamente de un incendio</strong> — que un bosque se queme y al poco tiempo aparezca ahí un loteo o un campo distinto. Los incendios arrasan miles de hectáreas por año en Argentina; sin este freno, quemar se vuelve un atajo para cambiarle el destino a la tierra.",true],
-      ["Qué elimina","Para bosques nativos, el proyecto mantiene la prohibición de cambiar el uso del suelo — pero <strong>le saca el plazo fijo de 60 años</strong>, dejándola sin un límite temporal claro. Para pastizales, praderas, matorrales, zonas agropecuarias y áreas periurbanas, <strong>deroga directamente el freno de 30 años</strong>: ahí sí se puede cambiar el uso del suelo después de un incendio, sin esperar nada. La protección de humedales y áreas protegidas por fuera de estas categorías no aparece mencionada en el dictamen — <span class=\"pending\">PENDIENTE</span> hasta confirmar si sigue vigente por otra norma o si queda expuesta.",true],
-      ["A quién beneficia","No es la primera vez que se apunta a esta ley: en 2023 ya se intentó por decreto (no prosperó), en 2025 se vació el Fondo Nacional de Manejo del Fuego y se bajó de rango su coordinación (de Ambiente a Seguridad). Mientras tanto, Parques Nacionales tiene 380 brigadistas cuando necesitaría 600, y el Servicio Nacional de Manejo del Fuego 130 cuando debería tener el doble. <strong>Quien gana no es quien combate el fuego — es quien puede convertir la tierra quemada en negocio más rápido.</strong>",true]
-    ],
-    src:"Revista Sudestada (Natalia Mazzei) · Ley 26.815 y modif. 2020 · ATE Nacional · eldiarioAR · Chequeado"
-  }
-};
+/* datos en data.js */
 
 /* ---------- render dossier ---------- */
 const dossier=document.getElementById('dossier');
