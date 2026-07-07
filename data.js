@@ -8,32 +8,37 @@ const NODES = {
   },
 
   1: {
-    title: "Ley de Tierras Rurales 26.737",
+    title: "Ley de Tierras Rurales - 26.737",
     flag: { t: "TIERRAS · SE VACÍA", c: "flag-loss" },
     points: [
-      [
-        "Por qué importa",
-        `Esto no se trata de tu casa ni de tu terreno. <strong> Se trata de quién puede comprar el suelo donde están el agua y los minerales que el mundo necesita </strong>y que ya casi no quedan en el planeta.
-        Hay recursos que no se fabrican: el agua dulce, el litio, los glaciares. El país que los tiene, manda. Y Argentina es uno de los pocos que todavía los tiene. Por eso el capital extranjero viene a comprar esa tierra — no para vivir ahí, sino para quedarse con lo que hay abajo.
-        El mapa de la tierra que compran los extranjeros curiosamente coincide con el mapa del agua y los minerales. Donde hay algo valioso, aparece el capital. Y detrás, una ley que le abre la puerta.`,
+       [
+        "El truco",
+        `El despojo ya no se hace quitando.
+        Se hace "dando libertad": sacan el límite nacional a la venta de tierras y lo llaman federalismo.
+        <strong>Pero esa "libertad" no es para vos.</strong>
+        Es para corporaciones y fondos globales que pagan en dólares lo que haga falta. Contra eso, ni el productor argentino ni el rico de acá compiten: el precio se dispara y la tierra queda fuera de alcance de cualquiera de nosotros.
+        Arriba, un capital tan grande que ni entra en la cuenta lo local. Abajo, el campesino, que ni siquiera aparece. Y en el medio, una ley que le abre la puerta al de arriba.`,
         true
       ],
-      [
-        "Qué protege hoy",
-        `Hoy la ley pone un techo. Ningún extranjero puede ser dueño de más del 15% de la tierra rural del país, y ese tope vale también dentro de cada provincia y cada municipio — para que no se concentre todo en una misma zona. De ese 15%, ninguna nacionalidad puede quedarse con más de un tercio.
-Y hay tierras que directamente no se pueden vender a extranjeros: las que contienen o lindan con agua —ríos, lagos, glaciares— y las de zona de frontera. Son las más sensibles, porque de ahí depende el acceso al agua y la soberanía sobre los límites del país.
-En una frase: hoy el límite existe, y es nacional. "¿Que a veces se incumple? Sí, se incumple, pero existiendo al menos hay base legal para reclamar; sin él, ni siquiera eso".`,
-        true
-      ],
-      [
-        "A quién beneficia",
-        `Esto no se trata de un comprador común, de alguien que quiere su casa o su campo. Se trata de ceder territorio estratégico a corporaciones — la escala es la que cambia todo.
-El caso de Lago Escondido lo muestra. El magnate británico Joe Lewis compró en 1996 las tierras que rodean el lago y lo dejó cercado dentro de su propiedad privada — un espejo de agua que, por ley, es de todos. Pudo hacerlo porque cuando compró, ese límite todavía no existía; la ley que hoy lo prohíbe llegó recién en 2011. Y aun así no alcanzó: en 2023 la justicia falló a favor de Lewis, y para llegar al lago hoy hay que caminar cuatro días por la montaña.
-Y ahora hay un uso nuevo para esa tierra: los centros de datos de inteligencia artificial. En octubre de 2025, la empresa Stargate anunció junto a OpenAI una inversión de hasta 25.000 millones de dólares para instalar uno en la Patagonia. ¿Por qué acá? Por lo mismo de siempre: tierra barata, clima frío y, sobre todo, agua — la que estas plantas necesitan para enfriarse, millones de litros, en una región donde los ríos ya vienen bajos.
-Un data center de esa escala consumiría el agua y la energía de una provincia entera, y dejaría cincuenta empleos. El asesor presidencial Demian Reidel lo resumió sin filtro ante un salón de empresarios: la Patagonia es ideal, dijo, solo que "está poblada de argentinos" — algo que, según él, ya "arreglaron".
-Antes se llevaban lo que había abajo. Ahora se llevan el lugar entero. Y de eso no se vuelve.`,
-        true
-      ]
+    [
+      "Qué se pierde",
+      `Hoy hay un techo, y vale para todo el país: ningún extranjero puede quedarse con más del 15% de la tierra 
+      rural ni con más de 1.000 hectáreas de las más fértiles, y la zona de frontera no se toca. 
+      El proyecto borra todo eso. En su lugar, cada provincia decide sola — 24 criterios en vez de uno.
+      Y un gobernador es mucho más fácil de convencer que una ley pareja para todos: donde había un límite firme,
+      ahora hay una firma que se puede negociar. Todos sabemos lo que suele pesar sobre esas voluntades.`,
+      true
+    ],
+    [
+      "Por qué esta tierra",
+      `No compran cualquier campo: casualmente compran el que tiene agua, litio o glaciares debajo. 
+      Lo que el mundo necesita y ya casi no queda — y que, una vez agotado o contaminado, no vuelve.
+      Supongamos que no te preocupa la patria, ni la soberanía, ni cómo nos afecta. 
+      Perfecto: entonces mirá el negocio. Para este capital, un río no es un río: es un activo. 
+      Un glaciar no es agua, es una reserva a futuro. El litio y el agua ya cotizan en bolsa antes de salir de la tierra — y esto no es agenda verde: es Wall Street.
+      No lo compran para vivir ahí. Lo compran para convertirlo en zona de sacrificio: un lugar del que se extrae todo —agua, energía, minerales— para alimentar algo que pasa lejos de ahí. Hoy, por ejemplo, centros de datos que enfrían máquinas con el agua que a los pueblos les falta.`,
+      true
+    ]
     ],
     tags: [
       ["DESPOJO", "se quita una protección que ya existía (los topes de 15%, 30% y 1.000 ha)"],
