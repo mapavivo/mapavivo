@@ -325,6 +325,7 @@ h1 {
 .pitch {
   font-family: "DM Sans", sans-serif;
   padding: 13px 0px 0px 0px;
+  display: none;
 }
 
 .lede-wrap {
@@ -891,7 +892,6 @@ svg.map {
 .pt {
   display: flex;
   flex-direction: column;
-  padding: 10px 0;
   border-bottom: 1px solid var(--hair-soft);
 }
 .pt:last-child {
@@ -905,7 +905,7 @@ svg.map {
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--ink-soft);
-  margin-bottom: 10px;
+  margin-bottom: 2px;
 }
 
 .pt-arrow {
@@ -921,6 +921,8 @@ svg.map {
   letter-spacing: 0.01em;
   font-family: "Bricolage Grotesque", sans-serif;
   font-weight: 400;
+  padding: 2px 0px;
+  line-height: 18px;
 }
 .pt-v strong {
   font-weight: 400;
