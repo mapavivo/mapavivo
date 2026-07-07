@@ -1,0 +1,3 @@
+Para la próxima vez que edites el SCSS y quieras que se compile automáticamente, podés correr en la terminal:    
+npx sass styles.scss styles.css --watch                                                                                               
+                                           

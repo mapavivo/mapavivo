@@ -16,337 +16,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --paper:#fefefe;
-    --paper-2:#DCDDD6;
-    --ink:#17191B;
-    --ink-soft:#4A4E4C;
-    --hair:#B7BAB1;
-    --hair-soft:#C9CBC3;
-    --mapa-red:#ed0135;
-    --mapa-red-deep:#B8004B;
-    --slate:#1C2024;
-    --slate-2:#23282C;
-    --blue:#3E5B6A;
-    --ok:#3A5A3E;
-  }
-
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Archivo',system-ui,sans-serif;
-    font-size:17px;
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-  }
-  .mono{font-family:'JetBrains Mono',monospace}
-  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
-
-  /* ---------- top bar ---------- */
-  .topbar{
-    border-bottom:1px solid var(--ink);
-    background:var(--paper);
-    position:sticky;top:0;z-index:40;
-  }
-  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
-  .brand{display:flex;align-items:baseline;gap:10px}
-  .brand b{font-weight:900;letter-spacing:-.02em;font-size:19px}
-  .brand span{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink-soft);text-transform:uppercase}
-  .topbar .status{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mapa-red);letter-spacing:.06em;display:flex;align-items:center;gap:7px}
-  .print-btn{
-    font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
-    background:transparent;border:1px solid var(--ink);color:var(--ink);padding:6px 12px;border-radius:3px;cursor:pointer;
-  }
-  .print-btn:hover{background:var(--ink);color:var(--paper)}
-  .dot{width:8px;height:8px;border-radius:50%;background:var(--mapa-red);display:inline-block;animation:pulse 1.8s ease-in-out infinite}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
-  @media (prefers-reduced-motion:reduce){.dot{animation:none}}
-
-  /* ---------- hero ---------- */
-  .hero{padding:14px 0 20px}
-  .eyebrow{
-    font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--ink-soft);margin-bottom:22px;
-    display:flex;gap:14px;flex-wrap:wrap;align-items:center;
-  }
-  .eyebrow .tag{border:1px solid var(--hair);padding:3px 9px;border-radius:2px}
-  .eyebrow .tag.urgent{border-color:var(--mapa-red);color:var(--mapa-red);background:rgba(237,1,53,.05)}
-  h1{
-    font-weight:900;letter-spacing:-.025em;line-height:1.05;
-    font-size:clamp(26px,3.6vw,38px);text-transform:uppercase;
-  }
-  .mapa-red-text{color:var(--mapa-red)}
-  .mapa-yellow-text{color:yellow}
-  .hl-yellow{background:#FFFF00;color:#111;padding:0 8px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-  .top-row{
-    display:flex;gap:28px;align-items:stretch;flex-wrap:wrap;margin-top:22px;
-  }
-  .hero-box{
-    border:1px solid var(--ink);border-radius:4px;
-    padding:22px 24px 0;flex:1;min-width:320px;display:flex;flex-direction:column;justify-content:space-between;
-  }
-  .lede-wrap{flex:1;min-width:260px;align-self:center;display:flex;flex-direction:column;gap:12px}
-  .hero .lede{
-    font-size:clamp(15.5px,1.8vw,17px);
-    line-height:1.5;color:var(--ink);
-  }
-  .countbar{
-    margin:20px -24px 0;display:flex;flex-wrap:wrap;gap:0;
-    border:none;border-top:1px solid var(--ink);border-radius:0;overflow:hidden;width:calc(100% + 48px);
-  }
-  .countbar .cell{padding:12px 20px;border-right:1px solid var(--hair);flex:1;min-width:110px}
-  .countbar .cell:last-child{border-right:0}
-  .countbar .k{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
-  .countbar .v{font-weight:800;font-size:18px;letter-spacing:-.01em;margin-top:3px}
-  .countbar .cell.hot .v{color:var(--mapa-red)}
-  @media (max-width:640px){.top-row{flex-direction:column}}
-
-  /* ---------- section frames ---------- */
-  section{padding:32px 0}
-  #mapa{padding-top:10px}
-  #convocatoria{padding:14px 0}
-  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
-  .sec-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mapa-red);letter-spacing:.1em}
-  .sec-title{font-weight:800;font-size:clamp(22px,3.4vw,30px);letter-spacing:-.02em;text-transform:uppercase}
-  .sec-sub{color:var(--ink-soft);max-width:640px;margin-bottom:30px;font-size:15.5px}
-
-  /* ---------- tabs (toggle) ---------- */
-  .tabs{display:flex;gap:0;margin-bottom:6px;border:1px solid var(--ink);border-radius:4px;overflow:hidden;width:fit-content;max-width:100%}
-  .tabs-divider{border:none;border-top:1px solid var(--hair);margin:0px 0 4px}
-  .tab{
-    font-family:'Archivo';font-weight:700;font-size:14px;padding:11px 18px;
-    background:var(--paper-2);color:var(--ink-soft);border:none;border-right:1px solid var(--hair);
-    cursor:default;position:relative;white-space:nowrap;
-  }
-  .tab:last-child{border-right:0}
-  .tab.active{background:var(--mapa-red);color:#fff}
-  .tab:disabled{color:#9A9D95;cursor:not-allowed}
-  .tab .soon{display:block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:#AEB0A8;margin-top:2px}
-  @media (max-width:640px){.tabs{width:100%}.tab{flex:1;font-size:12px;padding:10px 8px}}
-
-  /* ---------- map: una sola versión, grilla 2x2 ---------- */
-  .printable-stack{display:none}
-  .print-module{margin-bottom:22px;break-inside:avoid;page-break-inside:avoid}
-
-  @media print{
-    body{background:#fff;font-size:12px}
-    .print-btn,.topbar .status,.tabs,.tabs-divider,#dossier,#convocatoria,#compartir,footer .principle,.toast,.map-hint-top{display:none!important}
-    svg.map{display:block!important}
-    .printable-stack{display:block!important}
-    .map-frame{border:1px solid #000;background:#fff}
-    a{color:inherit;text-decoration:none}
-    .dossier,.print-module{border:1px solid #000;box-shadow:none}
-    .d-top{background:#e8e8e8!important;color:#000!important}
-    .d-top h3{color:#000!important}
-    .d-flag{background:#000!important;color:#fff!important}
-    section{padding:14px 0}
-  }
-  .map-hint-top{
-    font-family:'Archivo';font-weight:800;font-size:13px;letter-spacing:.02em;
-    color:var(--ink);text-align:left;max-width:40%;margin-bottom:10px;
-  }
-  @media (max-width:820px){.map-hint-top{max-width:100%}}
-  .mapa-split{display:flex;gap:28px;align-items:stretch}
-  .mapa-split .map-frame{display:flex;flex-direction:column;justify-content:start}
-  .mapa-split .map-frame{flex:1 1 40%;max-width:40%}
-  .mapa-split .dossier{flex:1 1 60%;max-width:60%;margin-top:0}
-  @media (max-width:820px){
-    .mapa-split{flex-direction:column}
-    .mapa-split .map-frame,.mapa-split .dossier{max-width:100%;width:100%}
-  }
-  .map-frame{
-    padding:0px;position:relative;
-  }
-
-  .map-flag{text-align:center;margin-top:8px}
-  .map-flag .d-flag{display:inline-block}
-  svg.map{display:block;width:100%;height:auto;overflow:visible}
-  .node{cursor:pointer;outline:none}
-  .node circle.core{fill:var(--paper);stroke:var(--ink);stroke-width:1.5;transition:.18s}
-  .node.urgent circle.core{stroke:var(--mapa-red);stroke-width:2.5;fill:#FCDCEA}
-  .node .ring{fill:none;stroke:var(--ink);stroke-width:1.5;opacity:0;transition:opacity .18s;pointer-events:none}
-  .node:hover .ring,.node:focus-visible .ring,.node.active .ring{opacity:1}
-  .node text{font-family:'JetBrains Mono',monospace;fill:var(--ink);pointer-events:none}
-  .node .lbl{font-size:12px;font-weight:700}
-  .node .sub{font-size:9.5px;fill:var(--ink-soft)}
-  .node.active circle.core{fill:var(--mapa-red);stroke:var(--mapa-red)}
-  .node.active text.lbl{fill:#fff}
-  .node.active .sub{fill:rgba(255,255,255,.7)}
-  .thread{stroke:var(--hair);stroke-width:1.2;fill:none}
-  .thread.strong{stroke:var(--mapa-red);stroke-width:2;stroke-dasharray:5 4}
-  .hub circle{fill:var(--slate);stroke:none}
-  .hub text{fill:var(--paper);font-family:'JetBrains Mono',monospace;text-anchor:middle;pointer-events:none}
-  .hub .h1{font-size:11px;font-weight:700;letter-spacing:.04em}
-  .hub .h2{font-size:8.5px;fill:rgba(228,229,223,.65)}
-  /* caja central (Ley de Inviolabilidad) */
-  .node.central{cursor:pointer}
-  .node.central .core-rect{fill:var(--ink);stroke:var(--ink);stroke-width:2;transition:.18s}
-  .node.central .ring-box{fill:none;stroke:var(--ink);stroke-width:1.5;opacity:0;transition:opacity .18s;pointer-events:none}
-  .node.central:hover .ring-box,.node.central:focus-visible .ring-box{opacity:1}
-  .node.central.active .core-rect{fill:var(--mapa-red);stroke:var(--mapa-red)}
-  .node.central text.lbl-box{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:19px;fill:#fff;letter-spacing:.01em;pointer-events:none}
-  .node.central text.sub-box{font-family:'JetBrains Mono',monospace;font-size:11px;fill:rgba(255,255,255,.75);pointer-events:none}
-  /* palabras clave al lado de cada burbuja, texto chico, alineado a la izquierda */
-  .kw{font-family:'Archivo',sans-serif;font-size:13px;font-weight:600;fill:var(--ink);pointer-events:none}
-  .kw-ref{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;fill:var(--mapa-red);pointer-events:none}
-  .kw-pending{fill:#B8862B;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.03em;pointer-events:none}
-
-  /* ---------- dossier ---------- */
-  .dossier{
-    margin-top:14px;border:1px solid var(--ink);border-radius:4px;background:var(--paper);
-    min-height:220px;overflow:hidden;
-  }
-  .dossier .d-top{
-    background:var(--mapa-red);color:var(--paper);padding:16px 20px;
-    display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;
-  }
-  .dossier .d-top h3{font-size:19px;font-weight:800;letter-spacing:-.01em;line-height:1.15;color:#fff;text-transform:uppercase}
-  .dossier .d-flag{
-    font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;
-    padding:4px 9px;border-radius:2px;white-space:nowrap;text-transform:uppercase;
-  }
-  .flag-urgent{background:var(--mapa-red);color:#fff}
-  .flag-loss{background:yellow;color:black}
-  .flag-node{background:transparent;border:1px solid rgba(228,229,223,.4);color:var(--paper)}
-  .flag-pending{background:#B8862B;color:#fff}
-  .dossier .d-body{padding:12px 12px 18px}
-  .d-body .d-flag{display:inline-block;margin-bottom:16px}
-  .d-body .flag-node{border-color:var(--hair);color:var(--ink-soft)}
-  .pts{display:grid;grid-template-columns:1fr;gap:0}
-  .pt{display:flex;gap:13px;padding:4px 0;border-bottom:1px solid var(--hair-soft)}
-  .pt:last-child{border-bottom:0}
-  .pt-k{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:-.025em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:4px}
-  .pt-v{font-size:14.5px;line-height:1.45}
-  .pt-v strong{font-weight:700}
-  .pending{color:#8A6410;font-style:normal}
-  .pt-pending .pt-v{color:#8A6410}
-  .d-src{margin-top:14px;padding-top:12px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-  .doc-btn{
-    font-family:'Archivo';font-weight:700;font-size:12.5px;color:var(--mapa-red);text-decoration:none;
-    border:1px solid var(--mapa-red);border-radius:3px;padding:6px 12px;white-space:nowrap;transition:.15s;
-    max-width:100%;
-  }
-  .doc-btn:hover{background:var(--mapa-red);color:#fff}
-  @media (max-width:480px){
-    .doc-btn{white-space:normal;display:block;width:100%;text-align:center;box-sizing:border-box;font-size:11.5px;line-height:1.4}
-  }
-  .d-dev{margin-top:18px;padding-top:16px;border-top:1px dashed var(--hair)}
-  .d-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-  .tag-chip{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--mapa-red);border:1px solid var(--mapa-red);border-radius:2px;padding:4px 9px}
-  .d-dev-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--mapa-red);margin-bottom:8px;cursor:pointer;user-select:none;display:flex;align-items:center;gap:6px}
-  .d-dev-label:hover{color:var(--mapa-red-deep)}
-  .d-dev-arrow{display:inline-block;transition:transform .18s;font-size:18px;font-weight:700;line-height:1}
-  .d-dev.open .d-dev-arrow{transform:rotate(90deg)}
-  .d-dev-text{font-size:15px;line-height:1.6;color:var(--ink);display:none;margin-top:4px}
-  .d-dev.open .d-dev-text{display:block}
-  .src{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:var(--ink-soft)}
-  /* ---------- ask ---------- */
-  .ask{background:var(--slate);color:var(--paper);border-radius:4px;padding:34px;margin-top:8px}
-  .ask-split{display:flex;gap:28px;align-items:center}
-  .ask-split h2{flex:1 1 50%;max-width:50%}
-  .ask-split p{flex:1 1 50%;max-width:50%}
-  @media (max-width:640px){.ask-split{flex-direction:column;align-items:flex-start}.ask-split h2,.ask-split p{max-width:100%}.ask-split p{margin-top:16px}}
-  .ask .sec-num{color:#E8A29C}
-  .ask h2{font-weight:900;font-size:clamp(24px,4vw,36px);text-transform:uppercase;letter-spacing:-.02em;line-height:1.02}
-  .ask .fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
-  .ask label{display:block}
-  .ask .flabel{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(228,229,223,.6);margin-bottom:6px}
-  .ask input{
-    width:100%;background:var(--slate-2);border:1px solid #3A4147;color:var(--paper);
-    padding:11px 13px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:14px;
-  }
-  .ask input:focus{outline:2px solid var(--mapa-red);outline-offset:1px;border-color:var(--mapa-red)}
-  .ask input::placeholder{color:#6B7278}
-  .ask .note{margin-top:14px;font-size:12.5px;color:rgba(228,229,223,.55);font-family:'JetBrains Mono',monospace}
-  @media (max-width:560px){.ask .fields{grid-template-columns:1fr}}
-
-  /* ---------- generator ---------- */
-  .config-hidden{display:none}
-  .share-split{display:flex;gap:32px;align-items:center}
-  .share-flyer{flex:1 1 50%;max-width:50%}
-  .share-flyer canvas{width:100%;height:auto;border:1px solid var(--ink);border-radius:4px;display:block;background:#fff}
-  .share-actions{flex:1 1 50%;max-width:50%}
-  .share-actions .share-btns{margin-top:0}
-  @media (max-width:640px){.share-split{flex-direction:column}.share-flyer,.share-actions{max-width:100%}}
-  @media (max-width:820px){.gen-grid{grid-template-columns:1fr}}
-  .controls{border:1px solid var(--hair);border-radius:4px;padding:22px;background:var(--paper-2)}
-  .org-toggle{
-    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em;color:var(--mapa-red);
-    cursor:pointer;user-select:none;margin:18px 0 0;padding-top:16px;border-top:1px dashed var(--hair);
-    display:flex;align-items:center;gap:7px;
-  }
-  .org-toggle:hover{color:var(--mapa-red-deep)}
-  .org-arrow{display:inline-block;transition:transform .18s;font-size:13px;font-weight:700}
-  .org-toggle.open .org-arrow{transform:rotate(90deg)}
-  .org-fields{display:none;margin-top:16px}
-  .org-fields.open{display:block}
-  .ctl{margin-bottom:18px}
-  .ctl:last-child{margin-bottom:0}
-  .ctl .clabel{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:7px;display:flex;justify-content:space-between}
-  .ctl-hint{font-size:11.5px;color:var(--ink-soft);margin-top:5px;line-height:1.4}
-  .ctl .clabel .lock{color:var(--mapa-red)}
-  .ctl input[type=text]{width:100%;background:var(--paper);border:1px solid var(--hair);color:var(--ink);padding:10px 12px;border-radius:3px;font-family:'Archivo';font-size:15px}
-  .ctl input:focus{outline:2px solid var(--mapa-red);outline-offset:1px}
-  .swatches{display:flex;gap:8px;flex-wrap:wrap}
-  .swatch{width:34px;height:34px;border-radius:3px;border:2px solid transparent;cursor:pointer}
-  .swatch.on{border-color:var(--ink);box-shadow:0 0 0 2px var(--paper) inset}
-  .upload{
-    display:block;width:100%;box-sizing:border-box;
-    border:1.5px dashed var(--hair);border-radius:3px;padding:16px;text-align:center;cursor:pointer;
-    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-soft);transition:.15s;background:var(--paper);
-    overflow-wrap:break-word;
-  }
-  .upload:hover{border-color:var(--mapa-red);color:var(--mapa-red)}
-  .upload.has{color:var(--ok);border-color:var(--ok)}
-  .fixed-box{border:1px solid var(--hair);border-radius:3px;padding:12px 14px;background:var(--paper);font-size:13px}
-  .fixed-box .fx{display:flex;gap:8px;padding:4px 0;align-items:baseline}
-  .fixed-box .fx .mono{font-size:11px;color:var(--mapa-red);white-space:nowrap}
-  .preview-col{position:sticky;top:70px}
-  canvas{width:100%;height:auto;border:1px solid var(--ink);border-radius:4px;display:block;background:#fff}
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:9px;
-    font-family:'Archivo';font-weight:700;font-size:15px;padding:13px 20px;border-radius:3px;
-    border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;width:100%;margin-top:14px;
-    transition:.15s;
-  }
-  .btn:hover{background:var(--mapa-red);border-color:var(--mapa-red)}
-  .btn.ghost{background:transparent;color:var(--ink)}
-  .btn.ghost:hover{background:var(--ink);color:var(--paper)}
-
-  /* ---------- share ---------- */
-  .share-card{border:1px solid var(--ink);border-radius:4px;overflow:hidden}
-  .share-card .sc-top{background:var(--slate);color:var(--paper);padding:14px 18px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
-  .share-card .sc-body{padding:18px}
-  .msgbox{
-    width:100%;min-height:120px;background:var(--paper-2);border:1px solid var(--hair);border-radius:3px;
-    padding:14px;font-family:'Archivo';font-size:15px;line-height:1.5;resize:vertical;color:var(--ink);
-  }
-  .share-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-  .share-btns button{
-    flex:1;min-width:130px;font-family:'Archivo';font-weight:700;font-size:14px;padding:12px;border-radius:3px;
-    border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;transition:.15s;
-    display:flex;align-items:center;justify-content:center;gap:8px;
-  }
-  .share-btns button:hover{background:var(--ink);color:var(--paper)}
-  .toast{
-    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
-    background:var(--ink);color:var(--paper);padding:12px 22px;border-radius:4px;font-size:14px;font-weight:600;
-    opacity:0;pointer-events:none;transition:.25s;z-index:80;
-  }
-  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-  /* ---------- footer ---------- */
-  footer{border-top:1px solid var(--ink);padding:34px 0 60px;margin-top:20px}
-  .foot-grid{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start}
-  .foot-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-soft);line-height:1.7;max-width:520px}
-  .foot-note b{color:var(--ink)}
-  .principle{border-left:2px solid var(--mapa-red);padding-left:14px;font-size:14px;max-width:380px;line-height:1.5}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -357,25 +28,29 @@
   </div>
 </div>
 
-<!-- HERO -->
+<!-- HEADER -->
 <header class="hero">
   <div class="wrap">
     <div class="top-row">
       <div class="hero-box">
-        <div class="eyebrow"><span class="tag urgent">JUEVES 16/07 · SENADO</span></div>
-        <h1>Este jueves 16, <span class="hl-yellow">nuestra soberanía está en juego</span></h1>
+        <h1>El jueves 16/07 <span class="hl-yellow">nuestra soberanía está en juego</span></h1>
         <div class="countbar" id="countbar">
           <div class="cell hot"><div class="k">Faltan</div><div class="v" id="cd-days">—</div></div>
           <div class="cell"><div class="k">Cámara</div><div class="v">SENADO</div></div>
-          <div class="cell"><div class="k">Leyes</div><div class="v">04</div></div>
+          <div class="cell"><div class="k">Lectura</div><div class="v">4 MIN</div></div>
         </div>
       </div>
-      <div class="lede-wrap">
+    </div>
+    <!-- PITCH -->
+    <div class="lede-wrap">
+      <p class="pitch">
+        Una sola ley, cuatro derechos que se caen juntos: quién puede comprar tu tierra, cuánto tarda en sacarte de tu casa, y qué pasa si tu bosque se incendia. Todo se vota en la misma sesión, para que nadie lo vea por separado. El que gana no sos vos: son los fondos y multimillonarios que hoy tienen el capital para comprar lo que se destrabe.
+      </p>
+    </div>
+    <!-- <div class="lede-wrap">
         <p class="lede">Territorio, propiedad, vivienda — todo se decide en una sola sesión. El Senado tiene prevista la sesión para tratar la <strong>Ley de Inviolabilidad de la Propiedad Privada</strong>, que deroga los límites a la venta de tierra rural a capitales extranjeros. No es un caso aislado: es parte de un patrón. Este es el mapa.</p>
         <p class="lede">El mecanismo es el mismo en los cuatro: desregulación, blindaje legal y un actor extranjero sobre un recurso estratégico. Tocá cada nodo para leer el expediente.</p>
-      </div>
-    </div>
-
+    </div> -->
   </div>
 </header>
 
@@ -386,7 +61,7 @@
     <div class="tabs" role="tablist">
       <button class="tab active" role="tab" aria-selected="true">Ley de Inviolabilidad</button>
       <button class="tab" role="tab" disabled style="display:none">Ley de Glaciares<span class="soon">próximamente</span></button>
-      <button class="tab" role="tab" disabled style="display:none">Súper RIGI<span class="soon">próximamente</span></button>
+      <button class="tab" role="tab" disabled>Súper RIGI</button>
     </div>
     <hr class="tabs-divider">
 
@@ -555,12 +230,9 @@ const NODES = {
     title:"Ley de Inviolabilidad de la Propiedad Privada",
     flag:{t:"● SE VOTA EL 16/07",c:"flag-urgent"},
     points:[
-      ["Qué es","Un solo proyecto que modifica cuatro leyes a la vez: tierras rurales, expropiaciones, desalojos y manejo del fuego.",true],
-      ["Cómo llega","Impulsada por el Ejecutivo (Min. Desregulación). Dictamen de mayoría el 20/05.",true],
-      ["Qué se vota el 16","El texto completo en el recinto del Senado. Sesión prevista — ya se postergó dos veces antes.",true],
-      ["Por qué en conjunto","Al empaquetar cuatro reformas en una sola ley, se votan juntas: tocá cada nodo para ver qué cambia en cada una.",true]
+      ["Una misma guerra, cuatro frentes","Esta ley no regula la propiedad: regula quién puede perderla, y en qué condiciones se le puede exigir a alguien que la resista. Tierra, casa, indemnización, bosque — son cuatro variables de una misma ecuación: cuánto tiempo, cuánta garantía y cuánto respaldo económico necesita alguien para no ser desplazado. En los cuatro casos, ese tiempo y esa garantía se acortan.<br><br>El nombre elegido hace su propio trabajo: <em>\"inviolabilidad de la propiedad privada\"</em> convoca la imagen de la casa propia, el terreno familiar, el ahorro de una vida — la propiedad que cualquiera entiende como suya y quiere ver protegida. Pero el efecto real recae sobre todo en quien tiene capital para litigar largo, comprar en escala o mudar la titularidad de un país a otro. <strong>Se nombra lo pequeño para blindar lo grande.</strong>",true]
     ],
-    src:"Senado (dictamen) · Exp. PE-13/2026 · Mensaje 22/26 · CELS · Chequeado"
+    src:""
   },
   1:{
     title:"Ley de Tierras Rurales 26.737",
@@ -568,8 +240,8 @@ const NODES = {
     points:[
       ["Qué protege hoy","<strong>Ningún extranjero puede tener más del 15% de la tierra rural del país</strong> — ese tope se aplica también por provincia y por municipio. Dentro de ese 15%, ninguna nacionalidad puede quedarse con más del 30%. Y nadie puede superar las 1.000 hectáreas en la \"zona núcleo\" (las tierras más productivas).",true],
       ["Por qué importa","A nivel país, solo el 6% de la tierra rural es extranjera — muy por debajo del límite del 15%. Pero ese promedio esconde lo que pasa en zonas puntuales: <strong>en Tinogasta (Catamarca) ya es 27%, y hay zonas de la región pampeana que superan el 30%</strong>. El problema no es el promedio nacional, es dónde se concentra.",true],
-      ["Qué elimina","<strong>Esto no cambia nada para nadie que sea argentino: comprás y vendés tierra rural como siempre.</strong> Lo que desaparece es el límite que tenían los extranjeros privados —personas, fondos, corporaciones— para comprar sin tope. Solo sigue restringido un Estado extranjero comprando directamente. Y como comprar grandes extensiones requiere capital, el efecto real recae sobre todo en fondos de inversión y corporaciones extranjeras, no en pequeños compradores.",true],
-      ["A quién beneficia","Imaginate el límite: hoy nadie puede tener más de 1.000 hectáreas en la zona más productiva. <strong>Sin ese tope, alguien podría juntar una superficie del tamaño de la provincia de Misiones sin pedir ningún permiso especial.</strong> Las tierras con ríos o en zona de frontera siguen protegidas en el papel — pero con una salvedad: el Poder Ejecutivo puede autorizar excepciones si decide que no hay riesgo para la soberanía. Esa decisión ya no pasa por el Congreso.",true]
+      ["Qué elimina","El tope nacional del 15% desaparece. En su lugar, cada provincia decide si autoriza, regula o prohíbe la venta de tierra a extranjeros en su territorio — inclusive en zona de frontera, hoy protegida de forma reforzada a nivel federal. En el debate en el Senado, la senadora Ana Marks (Río Negro) lo describió como <strong>'federalismo de fragmentación'</strong>: 24 criterios distintos en vez de uno solo. Sigue restringida la compra directa por parte de un Estado extranjero.",true],
+      ["A quién beneficia","El caso más conocido de este mecanismo ya tiene nombre: <strong>Lago Escondido, en Río Negro</strong>, donde un magnate extranjero controla el acceso a un lago entero sin que haya forma legal de garantizar el paso público. Sin el tope nacional, ese tipo de concentración pasa a depender de si la provincia donde está el terreno decide ponerle un límite o no — y eso puede cambiar con cada gobierno provincial.",true]
     ],
     tags:[
       ["DESPOJO","se quita una protección que ya existía (los topes de 15%, 30% y 1.000 ha)"],
@@ -586,22 +258,22 @@ const NODES = {
     flag:{t:"EXPROPIACIONES",c:"flag-node"},
     points:[
       ["Qué protege hoy","Hoy, para expropiar, alcanza con que el Estado invoque \"utilidad pública\", sin un test único y estricto sobre qué tan justificado tiene que estar ese fin. La indemnización cubre el valor del bien y los daños directos.",true],
-      ["Qué elimina","El proyecto exige que la \"utilidad pública\" se interprete de forma restrictiva y pase un test de tres pasos: <strong>que el fin sea específico y concreto, y que la medida sea idónea, necesaria y proporcional</strong>. Además suma el lucro cesante (la ganancia que se deja de percibir) a la indemnización — con techo: no puede superar el 30% del daño directo, salvo que el expropiado pruebe más.",true],
-      ["Por qué importa","El Gobierno dice que esto da más seguridad jurídica y evita que el Estado se demore en pagar. Pero en la práctica, <strong>subir el estándar para expropiar y sumarle costo a la indemnización hace más difícil y más caro que el Estado avance sobre una propiedad</strong> — para una obra pública, una regularización de tierras, o cualquier política que necesite mover al dueño actual. También crea la \"expropiación indirecta\": si una regulación (ambiental, urbana, de precios) le saca al dueño el uso o el valor de su bien sin transferirle la propiedad, se puede reclamar como si fuera una expropiación.",true],
-      ["A quién beneficia","Gana quien tiene una propiedad grande o una inversión que el Estado podría necesitar tocar — desde un terrateniente hasta un fondo de inversión — porque <strong>le sube el piso de protección y le garantiza cobrar más</strong>. La nueva figura de \"expropiación regulatoria\" además abre una vía para cuestionar leyes ambientales o de planificación urbana que un privado sienta que le devalúan su propiedad sin decirlo.",true]
+      ["Qué elimina","El proyecto exige que la \"utilidad pública\" se interprete de forma restrictiva y pase un test de tres pasos: <strong>que el fin sea específico y concreto, y que la medida sea idónea, necesaria y proporcional</strong>. Suma el lucro cesante a la indemnización, con techo del 30% del daño directo. Y agrega una traba adicional: <strong>no puede haber transferencia de dominio sin que el Estado haya pagado la indemnización completa por adelantado</strong> — hoy puede tomar posesión y seguir discutiendo el monto después.",true],
+      ["Por qué importa","El Gobierno dice que esto da más seguridad jurídica y evita que el Estado se demore en pagar. Pero en la práctica, <strong>subir el estándar para expropiar y sumarle costo a la indemnización hace más difícil y más caro que el Estado avance sobre una propiedad</strong> — para una obra pública, una regularización de tierras, o cualquier política que necesite mover al dueño actual. También crea la \"expropiación indirecta\": si una regulación (ambiental, urbana, de precios) le saca al dueño el uso o el valor de su bien sin transferirle la propiedad, se puede reclamar como si fuera una expropiación. También le pone límite de tiempo a una figura menos conocida: la <strong>'ocupación temporánea anormal'</strong> (cuando el Estado usa un bien de forma transitoria sin expropiarlo, por ejemplo para una obra). Hoy no tiene plazo; el proyecto lo limita a 90 días, después de los cuales el Estado tiene que devolverlo o expropiarlo formalmente.",true],
+      ["A quién beneficia","Gana quien tiene una propiedad grande o una inversión que el Estado podría necesitar tocar — desde un terrateniente hasta un fondo de inversión — porque <strong>le sube el piso de protección y le garantiza cobrar más</strong>. La nueva figura de \"expropiación regulatoria\" además abre una vía para cuestionar leyes ambientales o de planificación urbana que un privado sienta que le devalúen su propiedad sin decirlo.",true]
     ],
-    src:"El Cronista · Chequeado · Ley 21.499 (reforma) · Canosa Abogados"
+    src:"El Cronista · Chequeado · Ley 21.499 (reforma) · Canosa Abogados · Ámbito (declaraciones ante Comisión de Ciencia, Senado)"
   },
   3:{
     title:"Régimen de Desalojos",
     flag:{t:"DESALOJOS",c:"flag-node"},
     points:[
       ["Qué protege hoy","<strong>Hoy, para desalojar a alguien antes de la sentencia final, el dueño tiene que dar una garantía económica real (caución real).</strong> El juicio va por la vía ordinaria, con más tiempo para que la persona ocupante presente pruebas y se defienda.",true],
-      ["Qué elimina","Todos los desalojos (urbanos y rurales) pasarían al trámite <strong>sumarísimo</strong>, el más rápido del Código Procesal. Y la caución real se reemplaza por una <strong>simple declaración jurada del propietario, sin respaldo económico</strong>, para pedir la desocupación anticipada antes de que termine el juicio.",true],
-      ["Por qué importa","El Gobierno dice que esto es para no dejar indefenso al dueño frente a los \"okupas\" y para bajar el precio de los alquileres. Pero <strong>el cambio es parejo para todos los desalojos, no solo usurpaciones: también corre para un inquilino que se atrasó con el pago del alquiler</strong>. Rige solo en CABA (cada provincia tiene su propio código y decide si copia la reforma). El único freno que le puso el Senado fue estirar de 3 a 10 días el aviso previo por falta de pago.",true],
-      ["A quién beneficia","Gana quien alquila o cede un inmueble y quiere recuperarlo rápido, sin depender de un juicio largo ni poner plata en garantía. <strong>El capítulo que tocaba los barrios populares (la suspensión de desalojos de la Ley 27.453 hasta 2032) se retiró del dictamen final</strong> — por ahora, esa protección específica no cambia con este proyecto.",true]
+      ["Qué elimina","El trámite <strong>sumarísimo</strong> — el más rápido del Código Procesal — se aplica específicamente a inmuebles usurpados. Ahí, la caución real se reemplaza por una <strong>simple declaración jurada del propietario, sin respaldo económico</strong>, para pedir la desocupación anticipada antes de que termine el juicio. Para el resto de los casos —como un inquilino atrasado con el alquiler— se mantiene el proceso ordinario, con el plazo de intimación estirado de 3 a 10 días.",true],
+      ["Por qué importa","El Gobierno dice que esto es para no dejar indefenso al dueño frente a los \"okupas\". A diferencia de lo que se discutió en el debate inicial, <strong>el texto final acotó el trámite exprés solo a usurpación</strong> — no alcanza a cualquier desalojo. Rige solo en CABA (cada provincia decide si copia la reforma).",true],
+      ["A quién beneficia","Gana quien tiene un inmueble usurpado y quiere recuperarlo rápido, sin depender de un juicio largo ni poner plata en garantía. <strong>El capítulo que tocaba los barrios populares (la suspensión de desalojos de la Ley 27.453/RENABAP hasta 2032) se retiró del dictamen final</strong> — por ahora, esa protección específica no cambia.",true]
     ],
-    src:"Chequeado · La Tinta · CELS · Código Procesal Civil y Comercial (arts. 679, 680 bis)"
+    src:"Perfil · Ámbito · Chequeado · La Tinta · CELS · Código Procesal Civil y Comercial (arts. 679, 680 bis) · APDH (declaración 28/05/2026)"
   },
   4:{
     title:"Ley de Manejo del Fuego",
@@ -609,10 +281,10 @@ const NODES = {
     points:[
       ["Qué protege hoy","<strong>Si un campo o un bosque se incendia, hoy no se le puede cambiar el uso del suelo por años</strong>: 60 años para bosques nativos, áreas protegidas y humedales; 30 años para pastizales y zonas agropecuarias. En ese tiempo no se puede lotear, desarrollar un emprendimiento inmobiliario ni cambiar la actividad productiva.",true],
       ["Por qué importa","<strong>La ley existe para que nadie se beneficie económicamente de un incendio</strong> — que un bosque se queme y al poco tiempo aparezca ahí un loteo o un campo distinto. Los incendios arrasan miles de hectáreas por año en Argentina; sin este freno, quemar se vuelve un atajo para cambiarle el destino a la tierra.",true],
-      ["Qué elimina","El proyecto mantiene una prohibición para bosques nativos, pero le saca el plazo de 60 años y buena parte de las restricciones. Y hace desaparecer directamente la protección para humedales, áreas protegidas, tierras fiscales y loteos — deroga el artículo que protegía pastizales y zonas agropecuarias enteras. <strong>Lo que la ley no nombra, deja de estar protegido.</strong>",true],
+      ["Qué elimina","Para bosques nativos, el proyecto mantiene la prohibición de cambiar el uso del suelo — pero <strong>le saca el plazo fijo de 60 años</strong>, dejándola sin un límite temporal claro. Para pastizales, praderas, matorrales, zonas agropecuarias y áreas periurbanas, <strong>deroga directamente el freno de 30 años</strong>: ahí sí se puede cambiar el uso del suelo después de un incendio, sin esperar nada. La protección de humedales y áreas protegidas por fuera de estas categorías no aparece mencionada en el dictamen — <span class=\"pending\">PENDIENTE</span> hasta confirmar si sigue vigente por otra norma o si queda expuesta.",true],
       ["A quién beneficia","No es la primera vez que se apunta a esta ley: en 2023 ya se intentó por decreto (no prosperó), en 2025 se vació el Fondo Nacional de Manejo del Fuego y se bajó de rango su coordinación (de Ambiente a Seguridad). Mientras tanto, Parques Nacionales tiene 380 brigadistas cuando necesitaría 600, y el Servicio Nacional de Manejo del Fuego 130 cuando debería tener el doble. <strong>Quien gana no es quien combate el fuego — es quien puede convertir la tierra quemada en negocio más rápido.</strong>",true]
     ],
-    src:"Revista Sudestada (Natalia Mazzei) · Ley 26.815 y modif. 2020 · ATE Nacional"
+    src:"Revista Sudestada (Natalia Mazzei) · Ley 26.815 y modif. 2020 · ATE Nacional · eldiarioAR · Chequeado"
   }
 };
 
@@ -624,7 +296,7 @@ function renderNode(n){
     const val=p[2]?p[1]:`<span class="pending">PENDIENTE — ${p[1]}</span>`;
     return `<div class="pt${p[2]?'':' pt-pending'}"><div class="pt-body"><div class="pt-k">${p[0]}</div><div class="pt-v">${val}</div></div></div>`;
   }).join('');
-  dossier.innerHTML=`<div class="d-top"><h3>${d.title}</h3></div><div class="d-body"><div class="pts">${pts}</div>${SHOW_DEV&&d.dev?`<div class="d-dev"><div class="d-dev-label" onclick="this.parentElement.classList.toggle('open')"><span class="d-dev-arrow">▸</span> DESARROLLO</div><p class="d-dev-text">${d.dev}</p></div>`:''}<div class="d-src"><span class="src">FUENTE · ${d.src}</span>${d.docUrl?`<a class="doc-btn" href="${d.docUrl}" target="_blank" rel="noopener" download>↓ ${d.docLabel||'Descargar documento oficial'}</a>`:''}</div>${d.tags?`<div class="d-tags">${d.tags.map(t=>`<span class="tag-chip">${t[0]}</span>`).join('')}</div>`:''}</div>`;
+  dossier.innerHTML=`<div class="d-top"><h3>${d.title}</h3></div><div class="d-body"><div class="pts">${pts}</div>${SHOW_DEV&&d.dev?`<div class="d-dev"><div class="d-dev-label" onclick="this.parentElement.classList.toggle('open')"><span class="d-dev-arrow">▸</span> DESARROLLO</div><p class="d-dev-text">${d.dev}</p></div>`:''}${d.src?`<div class="d-src"><span class="src">FUENTE · ${d.src}</span>${d.docUrl?`<a class="doc-btn" href="${d.docUrl}" target="_blank" rel="noopener" download>↓ ${d.docLabel||'Descargar documento oficial'}</a>`:''}</div>`:''}${d.tags?`<div class="d-tags">${d.tags.map(t=>`<span class="tag-chip">${t[0]}</span>`).join('')}</div>`:''}</div>`;
   document.getElementById('map-flag').innerHTML=`<span class="d-flag ${d.flag.c}">${d.flag.t}</span>`;
   document.querySelectorAll('.node').forEach(g=>g.classList.toggle('active',g.dataset.node===String(n)));
 }
