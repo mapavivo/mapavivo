@@ -16,15 +16,36 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Bricolage+Grotesque:ital,opsz,wght@0,12..96,400;0,12..96,500;0,12..96,700;1,12..96,400;1,12..96,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<div class="ticker" role="marquee" aria-label="Novedades">
+  <div class="ticker__track">
+    <ul class="ticker__list">
+      <li class="ticker__item"><span class="ticker__cat">SE VOTA</span>Jueves 16/07 · El Senado trata la Ley de Inviolabilidad de la Propiedad Privada</li>
+      <li class="ticker__item"><span class="ticker__cat">NUEVA LEY</span>Un solo proyecto modifica cuatro leyes a la vez: tierras, expropiaciones, desalojos y manejo del fuego</li>
+      <li class="ticker__item"><span class="ticker__cat">ACTUALIZADO</span>Desalojos: el trámite exprés acotado solo a usurpación — fuente Perfil 5/06</li>
+      <li class="ticker__item"><span class="ticker__cat">PRENSA</span>Lago Escondido como caso testigo del mecanismo que habilita esta ley</li>
+      <li class="ticker__item"><span class="ticker__cat">ACCIÓN</span>Compartí el mapa · mapavivo.ar</li>
+    </ul>
+    <ul class="ticker__list" aria-hidden="true">
+      <li class="ticker__item"><span class="ticker__cat">SE VOTA</span>Jueves 16/07 · El Senado trata la Ley de Inviolabilidad de la Propiedad Privada</li>
+      <li class="ticker__item"><span class="ticker__cat">NUEVA LEY</span>Un solo proyecto modifica cuatro leyes a la vez: tierras, expropiaciones, desalojos y manejo del fuego</li>
+      <li class="ticker__item"><span class="ticker__cat">ACTUALIZADO</span>Desalojos: el trámite exprés acotado solo a usurpación — fuente Perfil 5/06</li>
+      <li class="ticker__item"><span class="ticker__cat">PRENSA</span>Lago Escondido como caso testigo del mecanismo que habilita esta ley</li>
+      <li class="ticker__item"><span class="ticker__cat">ACCIÓN</span>Compartí el mapa · mapavivo.ar</li>
+    </ul>
+  </div>
+</div>
+
 <div class="topbar">
   <div class="wrap">
-    <div class="brand"><b>MAPA VIVO</b></div>
-    <div class="status"><span class="dot"></span>SESIÓN PREVISTA · JUE 16/07</div>
+    <div class="brand"><span>mapa vivo</span></div>
+    <!-- <nav class="topnav">
+      <a href="#quienes-somos">Quiénes somos</a>
+    </nav> -->
   </div>
 </div>
 
@@ -33,12 +54,12 @@
   <div class="wrap">
     <div class="top-row">
       <div class="hero-box">
-        <h1>El jueves 16/07 <span class="hl-yellow">nuestra soberanía está en juego</span></h1>
-        <div class="countbar" id="countbar">
-          <div class="cell hot"><div class="k">Faltan</div><div class="v" id="cd-days">—</div></div>
-          <div class="cell"><div class="k">Cámara</div><div class="v">SENADO</div></div>
-          <div class="cell"><div class="k">Lectura</div><div class="v">4 MIN</div></div>
-        </div>
+        <h1>
+          Impulsan una ley de entrega total. <br>
+          <span class="hl-yellow">
+          Está en riesgo nuestra soberanía nacional. <br>El daño es irreversible.
+         </span>
+        </h1>
       </div>
     </div>
     <!-- PITCH -->
@@ -51,7 +72,25 @@
         <p class="lede">Territorio, propiedad, vivienda — todo se decide en una sola sesión. El Senado tiene prevista la sesión para tratar la <strong>Ley de Inviolabilidad de la Propiedad Privada</strong>, que deroga los límites a la venta de tierra rural a capitales extranjeros. No es un caso aislado: es parte de un patrón. Este es el mapa.</p>
         <p class="lede">El mecanismo es el mismo en los cuatro: desregulación, blindaje legal y un actor extranjero sobre un recurso estratégico. Tocá cada nodo para leer el expediente.</p>
     </div> -->
-  </div>
+    <!-- <div class="countbar">
+      <div class="cell hot">
+        <div class="k">Faltan</div>
+        <div class="v" id="cd-days">—</div>
+      </div>
+      <div class="cell">
+        <div class="k">Leyes afectadas</div>
+        <div class="v">4</div>
+      </div>
+      <div class="cell">
+        <div class="k">Expediente</div>
+        <div class="v">PE-13/26</div>
+      </div>
+      <div class="cell">
+        <div class="k">Cámara</div>
+        <div class="v">Senado</div>
+      </div>
+    </div>
+  </div> -->
 </header>
 
 <!-- MAP -->
@@ -60,21 +99,20 @@
 
     <div class="tabs" role="tablist">
       <button class="tab active" role="tab" aria-selected="true">Ley de Inviolabilidad</button>
-      <button class="tab" role="tab" disabled style="display:none">Ley de Glaciares<span class="soon">próximamente</span></button>
-      <button class="tab" role="tab" disabled>Súper RIGI</button>
+      <!-- <button class="tab" role="tab" disabled style="display:none">Ley de Glaciares<span class="soon">próximamente</span></button>
+      <button class="tab" role="tab" disabled>Súper RIGI</button> -->
     </div>
     <hr class="tabs-divider">
 
-    <div class="mapa-split">
+    <div class="mapa-split" id="mapa-split">
     <div class="map-frame">
       <svg class="map" viewBox="0 0 400 449" role="group" aria-label="La Ley de Inviolabilidad y las cuatro leyes que modifica">
 
-        <g class="node central" data-node="0" tabindex="0" role="button" aria-label="Ley de Inviolabilidad de la Propiedad Privada">
+        <g class="node central" aria-label="Ley de Inviolabilidad de la Propiedad Privada">
           <rect class="ring-box" x="5" y="-3" width="390" height="106" rx="8"/>
           <rect class="core-rect" x="8" y="0" width="384" height="100" rx="6"/>
           <text class="lbl-box" x="200" y="37" text-anchor="middle" style="font-size:24px">LEY DE INVIOLABILIDAD</text>
           <text class="lbl-box" x="200" y="65" text-anchor="middle" style="font-size:24px">DE LA PROPIEDAD PRIVADA</text>
-          <text class="sub-box" x="200" y="86" text-anchor="middle" style="font-size:10px">se vota 16/07 · toca cuatro leyes a la vez</text>
         </g>
 
         <text x="200" y="128" text-anchor="middle" class="map-hint-top">Tocá el nodo para saber más.</text>
@@ -107,11 +145,25 @@
         </g>
       </svg>
       <div class="map-flag" id="map-flag"></div>
+      <div class="pattern-block">
+        <div class="pattern-title">Una misma guerra, cuatro frentes</div>
+        <p class="pattern-intro">            El nombre elegido hace su propio trabajo: <em>"inviolabilidad de la propiedad privada"</em> convoca la imagen de la casa propia, el terreno familiar, el ahorro de una vida — la propiedad que cualquiera entiende como suya y quiere ver protegida. Pero el efecto real recae sobre todo en quien tiene capital para litigar largo, comprar en escala o mudar la titularidad de un país a otro. <strong>Se nombra lo pequeño para blindar lo grande.</strong</p>
+        <button class="pattern-toggle" aria-expanded="false" onclick="const b=this.nextElementSibling;const open=b.classList.toggle('open');this.setAttribute('aria-expanded',open);this.classList.toggle('open',open)">
+          <span class="pattern-arrow">▸</span>
+          <span>Leer más</span>
+        </button>
+        <div class="pattern-body">
+          <p>Quien gana con esto no es un actor nuevo. Es el mismo perfil que aparece cada vez que se discute quién controla un recurso estratégico en Argentina: fondos de inversión, capital extranjero, actores con escala para litigar largo o comprar en volumen. Esta ley no es un hecho aislado — es una pieza de un mecanismo que se repite cada vez que hay tierra, agua o territorio de por medio: se desregula el acceso, se blinda jurídicamente al que ya tiene capital, y se llama a todo esto "seguridad jurídica" o "inviolabilidad". El nombre cambia. El patrón, no.</p>
+          <p>Esta ley no regula la propiedad: regula quién puede perderla, y en qué condiciones se le puede exigir a alguien que la resista. Tierra, casa, indemnización, bosque — son cuatro variables de una misma ecuación: cuánto tiempo, cuánta garantía y cuánto respaldo económico necesita alguien para no ser desplazado. En los cuatro casos, ese tiempo y esa garantía se acortan.
+></p>
+        </div>
+      </div>
     </div>
 
     <!-- dossier -->
     <div class="dossier" id="dossier" aria-live="polite"></div>
     </div>
+
     <div class="printable-stack" id="printable-stack"></div>
   </div>
 </section>
@@ -230,9 +282,7 @@ const NODES = {
   0:{
     title:"Ley de Inviolabilidad de la Propiedad Privada",
     flag:{t:"● SE VOTA EL 16/07",c:"flag-urgent"},
-    points:[
-      ["Una misma guerra, cuatro frentes","Esta ley no regula la propiedad: regula quién puede perderla, y en qué condiciones se le puede exigir a alguien que la resista. Tierra, casa, indemnización, bosque — son cuatro variables de una misma ecuación: cuánto tiempo, cuánta garantía y cuánto respaldo económico necesita alguien para no ser desplazado. En los cuatro casos, ese tiempo y esa garantía se acortan.<br><br>Quien gana con esto no es un actor nuevo. Es el mismo perfil que aparece cada vez que se discute quién controla un recurso estratégico en Argentina: fondos de inversión, capital extranjero, actores con escala para litigar largo o comprar en volumen. Esta ley no es un hecho aislado — es una pieza de un mecanismo que se repite cada vez que hay tierra, agua o territorio de por medio: se desregula el acceso, se blinda jurídicamente al que ya tiene capital, y se llama a todo esto \"seguridad jurídica\" o \"inviolabilidad\". El nombre cambia. El patrón, no.<br><br>El nombre elegido hace su propio trabajo: <em>\"inviolabilidad de la propiedad privada\"</em> convoca la imagen de la casa propia, el terreno familiar, el ahorro de una vida — la propiedad que cualquiera entiende como suya y quiere ver protegida. Pero el efecto real recae sobre todo en quien tiene capital para litigar largo, comprar en escala o mudar la titularidad de un país a otro. <strong>Se nombra lo pequeño para blindar lo grande.</strong>",true]
-    ],
+    points:[],
     src:""
   },
   1:{
@@ -295,17 +345,18 @@ function renderNode(n){
   const d=NODES[n];
   let pts=d.points.map((p,i)=>{
     const val=p[2]?p[1]:`<span class="pending">PENDIENTE — ${p[1]}</span>`;
-    return `<div class="pt${p[2]?'':' pt-pending'}"><div class="pt-body"><div class="pt-k">${p[0]}</div><div class="pt-v">${val}</div></div></div>`;
+    return `<div class="pt${p[2]?'':' pt-pending'}"><div class="pt-k">${p[0]}</div><div class="pt-v">${val}</div></div>`;
   }).join('');
-  dossier.innerHTML=`<div class="d-top"><h3>${d.title}</h3></div><div class="d-body"><div class="pts">${pts}</div>${SHOW_DEV&&d.dev?`<div class="d-dev"><div class="d-dev-label" onclick="this.parentElement.classList.toggle('open')"><span class="d-dev-arrow">▸</span> DESARROLLO</div><p class="d-dev-text">${d.dev}</p></div>`:''}${d.src?`<div class="d-src"><span class="src">FUENTE · ${d.src}</span>${d.docUrl?`<a class="doc-btn" href="${d.docUrl}" target="_blank" rel="noopener" download>↓ ${d.docLabel||'Descargar documento oficial'}</a>`:''}</div>`:''}${d.tags?`<div class="d-tags">${d.tags.map(t=>`<span class="tag-chip">${t[0]}</span>`).join('')}</div>`:''}</div>`;
+  dossier.innerHTML=`<div class="d-top"><h3>${d.title}</h3></div><div class="d-body"><div class="pts">${pts}</div>${SHOW_DEV&&d.dev?`<div class="d-dev"><div class="d-dev-label" onclick="this.parentElement.classList.toggle('open')"><span class="d-dev-arrow">▸</span> DESARROLLO</div><p class="d-dev-text">${d.dev}</p></div>`:''}${d.src?`<div class="d-src">${d.docUrl?`<button class="src-toggle" onclick="const b=this.nextElementSibling;const open=b.classList.toggle('open');this.classList.toggle('open',open)"><span class="pt-arrow">▸</span><span class="src">FUENTE · ${d.src}</span></button><div class="src-body"><a class="doc-btn" href="${d.docUrl}" target="_blank" rel="noopener" download>↓ ${d.docLabel||'Descargar documento oficial'}</a></div>`:`<span class="src">FUENTE · ${d.src}</span>`}</div>`:''}${d.tags?`<div class="d-tags">${d.tags.map(t=>`<span class="tag-chip">${t[0]}</span>`).join('')}</div>`:''}</div>`;
   document.getElementById('map-flag').innerHTML=`<span class="d-flag ${d.flag.c}">${d.flag.t}</span>`;
   document.querySelectorAll('.node').forEach(g=>g.classList.toggle('active',g.dataset.node===String(n)));
 }
 document.querySelectorAll('.node').forEach(g=>{
+  if(!g.dataset.node) return;
   g.addEventListener('click',()=>renderNode(g.dataset.node));
   g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();renderNode(g.dataset.node);}});
 });
-renderNode(0);
+renderNode(1);
 
 /* ---------- versión imprimible: los 5 módulos apilados y ya expandidos ---------- */
 function buildPrintableStack(){
