@@ -1,5 +1,9 @@
 name = "mapavivo"
 compatibility_date = "2026-07-07"
 
+[[routes]]
+pattern = "mapavivo.ar/*"
+zone_name = "mapavivo.ar"
+
 [assets]
 directory = "./"
