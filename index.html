@@ -55,10 +55,9 @@
     <div class="top-row">
       <div class="hero-box">
         <h1>
-          Impulsan una ley de entrega total. <br>
-          <span class="hl-yellow">
-          Está en riesgo nuestra soberanía nacional. <br>El daño es irreversible.
-         </span>
+          Alegría en la cancha,<br>
+          <span class="hl-black">cuatro goles en contra</span><br>
+          de un tiro en territorio.
         </h1>
       </div>
     </div>
@@ -151,7 +150,7 @@
     <div class="dossier" id="dossier" aria-live="polite"></div>
     </div>
 
-    <div class="pattern-block">
+    <!-- <div class="pattern-block" >
       <div class="pattern-title">Una misma guerra, cuatro frentes</div>
       <p class="pattern-intro">El nombre elegido hace su propio trabajo: <em>"inviolabilidad de la propiedad privada"</em> convoca la imagen de la casa propia, el terreno familiar, el ahorro de una vida — la propiedad que cualquiera entiende como suya y quiere ver protegida. Pero el efecto real recae sobre todo en quien tiene capital para litigar largo, comprar en escala o mudar la titularidad de un país a otro. <strong>Se nombra lo pequeño para blindar lo grande.</strong></p>
       <button class="pattern-toggle" aria-expanded="false" onclick="const b=this.nextElementSibling;const open=b.classList.toggle('open');this.setAttribute('aria-expanded',open);this.classList.toggle('open',open)">
@@ -162,14 +161,14 @@
         <p>Quien gana con esto no es un actor nuevo. Es el mismo perfil que aparece cada vez que se discute quién controla un recurso estratégico en Argentina: fondos de inversión, capital extranjero, actores con escala para litigar largo o comprar en volumen. Esta ley no es un hecho aislado — es una pieza de un mecanismo que se repite cada vez que hay tierra, agua o territorio de por medio: se desregula el acceso, se blinda jurídicamente al que ya tiene capital, y se llama a todo esto "seguridad jurídica" o "inviolabilidad". El nombre cambia. El patrón, no.</p>
         <p>Esta ley no regula la propiedad: regula quién puede perderla, y en qué condiciones se le puede exigir a alguien que la resista. Tierra, casa, indemnización, bosque — son cuatro variables de una misma ecuación: cuánto tiempo, cuánta garantía y cuánto respaldo económico necesita alguien para no ser desplazado. En los cuatro casos, ese tiempo y esa garantía se acortan.</p>
       </div>
-    </div>
+    </div> -->
 
     <div class="printable-stack" id="printable-stack"></div>
   </div>
 </section>
 
 <!-- ASK -->
-<section id="convocatoria">
+<!-- <section id="convocatoria">
   <div class="wrap">
     <div class="ask">
       <div class="ask-split">
@@ -178,7 +177,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- GENERATOR -->
 <!-- SHARE -->
@@ -188,7 +187,7 @@
 
     <div class="share-split">
       <div class="share-flyer">
-        <canvas id="canvas" width="1080" height="1080" aria-label="Vista previa de la placa"></canvas>
+        <img src="assets/placa-mario.png" alt="Placa Mapa Vivo" style="width:100%;display:block;">
       </div>
       <div class="share-actions">
         <div class="share-btns">
@@ -203,7 +202,7 @@
     <!-- lo editable/configurable queda oculto para esta instancia, pero sigue funcionando para el script -->
     <div class="config-hidden">
       <textarea class="msgbox" id="msg" readonly></textarea>
-      <button class="btn" id="download">↓ Descargar placa (1080×1080)</button>
+      <a class="btn" id="download" href="assets/placa-mario.png" download="mapavivo-placa.png">↓ Descargar placa (1080×1080)</a>
       <div class="controls">
         <div class="ctl">
           <div class="clabel"><span>Información</span><span class="lock">🔒 fija · no editable</span></div>
@@ -404,12 +403,7 @@ function wrap(t,x,y,max,lh){
 if(document.fonts&&document.fonts.ready){document.fonts.ready.then(draw);}
 draw();
 
-document.getElementById('download').addEventListener('click',()=>{
-  const a=document.createElement('a');
-  a.download='mapavivo-16julio-'+(state.name||'placa').replace(/\s+/g,'-').toLowerCase()+'.png';
-  a.href=cv.toDataURL('image/png');a.click();
-  toast('Placa descargada');
-});
+document.getElementById('download').addEventListener('click',()=>{toast('Placa descargada');});
 
 /* ---------- share message ---------- */
 const msgEl=document.getElementById('msg');
