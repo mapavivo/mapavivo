@@ -1,3 +1,10 @@
 Para la próxima vez que edites el SCSS y quieras que se compile automáticamente, podés correr en la terminal:    
 npx sass styles.scss styles.css --watch                                                                                               
                                            
+
+
+
+Tu bronca en bruto. Como hiciste con "queman todo y compran barato" o "wall street cero modo hippie". Decímelo mal, feo, directo — yo lo traduzco al tono. Esa frase bruta tuya es el corazón de cada punch.
+El material que ya juntaste (posteos, notas, capturas como las del PTP). Aunque sea de otros, me sirve de insumo y yo verifico.
+A quién le querés hablar en esa ley (al productor, al inquilino, al que vive en un barrio popular, al ambientalista). Cambia el enfoque.
+Si tenés un caso o un nombre que la ilustre (como Lewis para Tierras).
