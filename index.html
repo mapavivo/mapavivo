@@ -295,7 +295,7 @@ function renderNode(n){
   const d=NODES[n];
   let pts=d.points.map((p,i)=>{
     const val=p[2]?p[1]:`<span class="pending">PENDIENTE — ${p[1]}</span>`;
-    return `<div class="pt${p[2]?'':' pt-pending'}"><div class="pt-k">${p[0]}</div><div class="pt-v">${val}</div></div>`;
+    return `<div class="pt${p[2]?'':' pt-pending'}${p[3]?' pt-'+p[3]:''}"><div class="pt-k">${p[0]}</div><div class="pt-v">${val}</div></div>`;
   }).join('');
   dossier.innerHTML=`<div class="d-top"><h3>${d.title}</h3></div><div class="d-body"><div class="pts">${pts}</div>${SHOW_DEV&&d.dev?`<div class="d-dev"><div class="d-dev-label" onclick="this.parentElement.classList.toggle('open')"><span class="d-dev-arrow">▸</span> DESARROLLO</div><p class="d-dev-text">${d.dev}</p></div>`:''}${d.src?`<div class="d-src">${d.docUrl?`<button class="src-toggle" onclick="const b=this.nextElementSibling;const open=b.classList.toggle('open');this.classList.toggle('open',open)"><span class="pt-arrow">▸</span><span class="src">FUENTE · ${d.src}</span></button><div class="src-body"><a class="doc-btn" href="${d.docUrl}" target="_blank" rel="noopener" download>↓ ${d.docLabel||'Descargar documento oficial'}</a></div>`:`<span class="src">FUENTE · ${d.src}</span>`}</div>`:''}${d.tags?`<div class="d-tags">${d.tags.map(t=>`<span class="tag-chip">${t[0]}</span>`).join('')}</div>`:''}</div>`;
   document.getElementById('map-flag').innerHTML=`<span class="d-flag ${d.flag.c}">${d.flag.t}</span>`;
@@ -316,7 +316,7 @@ function buildPrintableStack(){
     const d=NODES[n];
     const pts=d.points.map((p,i)=>{
       const val=p[2]?p[1]:`<span class="pending">PENDIENTE — ${p[1]}</span>`;
-      return `<div class="pt${p[2]?'':' pt-pending'}"><div class="pt-body"><div class="pt-k">${p[0]}</div><div class="pt-v">${val}</div></div></div>`;
+      return `<div class="pt${p[2]?'':' pt-pending'}${p[3]?' pt-'+p[3]:''}"><div class="pt-body"><div class="pt-k">${p[0]}</div><div class="pt-v">${val}</div></div></div>`;
     }).join('');
     const dev=SHOW_DEV&&d.dev?`<div class="d-dev open"><div class="d-dev-label"><span class="d-dev-arrow">▸</span> DESARROLLO</div><p class="d-dev-text">${d.dev}</p></div>`:'';
     const tags=d.tags?`<div class="d-tags">${d.tags.map(t=>`<span class="tag-chip">${t[0]}</span>`).join('')}</div>`:'';
@@ -424,13 +424,7 @@ const msgEl=document.getElementById('msg');
 function buildMsg(){
   const loc=(state.hora||state.lugar)?`${state.hora||'[hora]'} · ${state.lugar||'[lugar]'}`:'[hora y lugar a confirmar]';
   msgEl.value=
-`🔴 JUEVES 16/07 — El Senado tiene prevista la sesión para votar la Ley de "Inviolabilidad de la Propiedad Privada".
-
-Entre otras cosas, deroga los límites a la venta de tierra rural a capitales extranjeros (Ley de Tierras 26.737).
-
-📍 Concentración: ${loc}
-
-Informate y difundí 👉 mapavivo.ar`;
+`🔺 JUEVES 16/07 — El Senado tiene previsto votar la Ley de "Inviolabilidad de la Propiedad Privada". Lo tapan y confunden de mil maneras para que pase en silencio. Te lo contamos simple: en 2 minutos, cómo nos impacta. Informate, compartí y difundamos lo que está pasando. 🔺 mapavivo.ar`;
 }
 buildMsg();
 

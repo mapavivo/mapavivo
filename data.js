@@ -12,37 +12,23 @@ const NODES = {
     flag: { t: "TIERRAS · SE VACÍA", c: "flag-loss" },
     points: [
       [
-      "",
-      `La ley <strong> elimina los límites a la compra de tierras rurales por parte de capital extranjero </strong>.
-      Hoy hay topes y protecciones; el proyecto los saca y deja la decisión en manos de cada provincia. Esto es lo que se toca:`,
-  true
-],
-       [
+        "",
+        `La ley abre la compra de tierra rural a fondos y corporaciones extranjeras. Hoy hay un tope que lo limita; el proyecto lo elimina. Esto es lo que se toca:`,
+        true
+      ],
+      [
         "El truco",
-        `El despojo ya no se hace quitando.
-        Se hace "dando libertad": sacan el límite nacional a la venta de tierras y lo llaman federalismo.
-        Pero <strong> esa "libertad" no es para vos </strong> . Es para corporaciones y fondos globales que pagan lo que haga falta.
-        Esta movida no le sirve a nadie de acá: ni al productor, ni al que tiene plata, ni mucho menos al campesino,
-        que ni aparece en la ecuación. Los únicos que ganan son los fondos y las corporaciones que ya manejan el mundo — y esta ley les abre la puerta.`,
+        `El despojo ya no se hace quitando. Se hace "dando libertad": sacan el límite a la compra extranjera de tierra y lo presentan como algo técnico. Pero esa "libertad" no es para vos. Es para corporaciones y fondos globales que pagan lo que haga falta. Esta movida no le sirve a nadie de acá: ni al productor, ni al campesino, que ni aparece en la ecuación. Los únicos que ganan son los fondos y las corporaciones que ya manejan el mundo — y esta ley les abre la puerta.`,
+        true
+      ],
+      [
+        "Qué se pierde",
+        `Hoy hay un techo que vale para todo el país: ningún extranjero puede quedarse con más del 15% de la tierra rural ni con más de 1.000 hectáreas de las más fértiles (arts. 8 y 10, ley 26.737). El proyecto borra eso. La restricción que queda es para Estados extranjeros — que casi no compran. Los que concentran tierra en el mundo son fondos y corporaciones privadas, y para ellos se levanta el límite. Se conserva la prohibición que no molesta y se saca la que sí importa.`,
         true
       ],
     [
-      "Qué se pierde",
-      `Hoy hay un techo, y vale para todo el país: ningún extranjero puede quedarse con más del 15% de la tierra
-      rural ni con más de 1.000 hectáreas de las más fértiles, y la zona de frontera no se toca.
-      El proyecto borra todo eso. En su lugar, cada provincia decide sola — 24 criterios en vez de uno.
-      Y un gobernador es mucho más fácil de convencer que una ley pareja para todos: donde había un límite firme,
-      ahora hay una firma que se puede negociar. Todos sabemos lo que suele pesar sobre esas voluntades.`,
-      true
-    ],
-    [
       "Por qué esta tierra",
-      `No compran cualquier campo: casualmente compran el que tiene agua, litio o glaciares debajo.
-      Lo que el mundo necesita y ya casi no queda — y que, una vez agotado o contaminado, no vuelve.
-      Supongamos que no te preocupa la patria, ni la soberanía, ni cómo nos afecta.
-      Perfecto: entonces mirá el negocio. Para este capital, un río no es un río: es un activo.
-      Un glaciar no es agua, es una reserva a futuro. El litio y el agua ya cotizan en bolsa antes de salir de la tierra — y esto no es agenda verde: es Wall Street.
-      No lo compran para vivir ahí. Lo compran para convertirlo en zona de sacrificio: un lugar del que se extrae todo —agua, energía, minerales— para alimentar algo que pasa lejos de ahí. Hoy, por ejemplo, centros de datos que enfrían máquinas con el agua que a los pueblos les falta.`,
+      `No compran cualquier campo: compran el que tiene agua, litio o glaciares debajo. Lo que el mundo necesita y ya casi no queda — y que, una vez agotado o contaminado, no vuelve. Supongamos que no te preocupa la soberanía. Perfecto: mirá el negocio. Para este capital, un río no es un río: es un activo. Un glaciar no es agua, es una reserva a futuro. El litio y el agua cotizan en bolsa antes de salir de la tierra — y esto no es agenda verde: es Wall Street. No lo compran para vivir ahí. Lo compran para convertirlo en zona de sacrificio: un lugar del que se extrae todo —agua, energía, minerales— para alimentar algo que pasa lejos. Hoy, por ejemplo, centros de datos que enfrían máquinas con el agua que a los pueblos les falta.`,
       true
     ]
     ],

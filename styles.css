@@ -971,6 +971,22 @@ svg.map {
   font-style: normal;
 }
 
+.pt-dato {
+  border-left: 3px solid var(--blue);
+  padding-left: 12px;
+  background: rgba(62, 91, 106, 0.05);
+}
+
+.pt-lectura {
+  border-left: 3px solid var(--mapa-red);
+  padding-left: 12px;
+  background: rgba(237, 1, 53, 0.03);
+}
+
+.pt-lectura .pt-v {
+  font-weight: 500;
+}
+
 .pt-pending .pt-v {
   color: #8A6410;
 }
