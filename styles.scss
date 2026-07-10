@@ -23,12 +23,12 @@
 $ticker-speed: 64s;
 
 .ticker {
-  background: var(--ink);
-  color: var(--yellow);
+  background: var(--yellow);
+  color: var(--ink);
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  border-bottom: 1px solid var(--yellow);
+  border-bottom: 1px solid var(--ink);
 
   &:hover .ticker__track {
     animation-play-state: paused;
@@ -76,7 +76,7 @@ $ticker-speed: 64s;
   }
 
   a {
-    color: var(--yellow);
+    color: var(--ink);
     text-decoration: underline;
     text-underline-offset: 2px;
 
@@ -233,7 +233,7 @@ body {
 
 // ---------- hero ----------
 .hero {
-  padding: 14px 0 20px;
+  padding: 14px 0 4px;
 
   .lede {
     font-size: clamp(15.5px, 1.8vw, 17px);
@@ -299,6 +299,7 @@ h1 {
   align-items: stretch;
   flex-wrap: wrap;
   margin-top: 22px;
+  margin-bottom: 10px;
 
   @media (max-width: 640px) { flex-direction: column; }
 }

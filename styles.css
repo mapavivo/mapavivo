@@ -16,12 +16,12 @@
 }
 
 .ticker {
-  background: var(--ink);
-  color: var(--yellow);
+  background: var(--yellow);
+  color: var(--ink);
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  border-bottom: 1px solid var(--yellow);
+  border-bottom: 1px solid var(--ink);
 }
 .ticker:hover .ticker__track {
   animation-play-state: paused;
@@ -74,7 +74,7 @@
   opacity: 0.45;
 }
 .ticker__item a {
-  color: var(--yellow);
+  color: var(--ink);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -242,7 +242,7 @@ body {
   }
 }
 .hero {
-  padding: 14px 0 20px;
+  padding: 14px 0 4px;
 }
 .hero .lede {
   font-size: clamp(15.5px, 1.8vw, 17px);
@@ -310,6 +310,7 @@ h1 {
   align-items: stretch;
   flex-wrap: wrap;
   margin-top: 22px;
+  margin-bottom: 10px;
 }
 @media (max-width: 640px) {
   .top-row {
