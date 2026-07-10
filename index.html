@@ -330,7 +330,8 @@ buildPrintableStack();
   const target=new Date(2026,6,16); // 16 julio 2026
   const now=new Date();
   const diff=Math.ceil((target-now)/(1000*60*60*24));
-  document.getElementById('cd-days').textContent=diff>0?(diff+' días'):(diff===0?'HOY':'—');
+  const cdEl=document.getElementById('cd-days');
+  if(cdEl) cdEl.textContent=diff>0?(diff+' días'):(diff===0?'HOY':'—');
 })();
 
 /* ---------- generator state ---------- */
@@ -356,9 +357,10 @@ document.getElementById('logo-input').addEventListener('change',e=>{
 });
 
 /* ---------- canvas draw ---------- */
-const cv=document.getElementById('canvas'), cx=cv.getContext('2d');
+const cv=document.getElementById('canvas'), cx=cv?cv.getContext('2d'):null;
 function rr(x,y,w,h,r){cx.beginPath();cx.moveTo(x+r,y);cx.arcTo(x+w,y,x+w,y+h,r);cx.arcTo(x+w,y+h,x,y+h,r);cx.arcTo(x,y+h,x,y,r);cx.arcTo(x,y,x+w,y,r);cx.closePath();}
 function draw(){
+  if(!cx) return;
   const W=1080;
   // ground
   cx.fillStyle='#1C2024';cx.fillRect(0,0,W,W);
