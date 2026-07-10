@@ -584,6 +584,22 @@ section#convocatoria {
     background: #fff;
     font-size: 12px;
   }
+  .hero-box {
+    background: #17191B !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .hero-box h1 {
+    color: #FFFF00 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .hl-white {
+    color: #fff !important;
+  }
+  .hl-yellow {
+    color: #FFFF00 !important;
+  }
   .print-btn,
   .topbar .status,
   .tabs,
@@ -926,7 +942,7 @@ svg.map {
 }
 
 .pt-v {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.45;
   letter-spacing: 0.01em;
   font-family: "Bricolage Grotesque", sans-serif;
@@ -969,22 +985,6 @@ svg.map {
 .pending {
   color: #8A6410;
   font-style: normal;
-}
-
-.pt-dato {
-  border-left: 3px solid var(--blue);
-  padding-left: 12px;
-  background: rgba(62, 91, 106, 0.05);
-}
-
-.pt-lectura {
-  border-left: 3px solid var(--mapa-red);
-  padding-left: 12px;
-  background: rgba(237, 1, 53, 0.03);
-}
-
-.pt-lectura .pt-v {
-  font-weight: 500;
 }
 
 .pt-pending .pt-v {
